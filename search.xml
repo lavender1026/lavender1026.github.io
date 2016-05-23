@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[iOS百宝箱]]></title>
+      <url>http://lavender1026.github.io/2016/05/22/Code%20101/</url>
+      <content type="html"><![CDATA[<h1 id="iOS百宝箱"><a href="#iOS百宝箱" class="headerlink" title="iOS百宝箱"></a>iOS百宝箱</h1><p>一件事，坚持100天就能变为习惯。           </p>
+<p>而从101天开始，便是习惯成自然的开始。</p>
+<p>iOS百宝箱 意在督促自己coding的同时，帮助更多的新手coder快捷便利的获取到有用的资源、文章、代码。</p>
+<hr>
+<h4 id="入门视频推荐"><a href="#入门视频推荐" class="headerlink" title="入门视频推荐"></a>入门视频推荐</h4><p>   <a href="http://pan.baidu.com/s/1cHnl2u" target="_blank" rel="external">算法与数据结构</a>密码: bhhi          </p>
+<p>   <a href="http://open.163.com/special/opencourse/ios8.html" target="_blank" rel="external">斯坦福大学公开课iOS8全12集</a>        </p>
+<p>   <a href="https://itunes.apple.com/cn/course/developing-ios-9-apps-swift/id1104579961" target="_blank" rel="external">斯坦福大学公开课iOS9Swift版</a> 没字幕，白胡子老爷爷的视频，适合英语水平不错的童鞋          </p>
+<h4 id="推荐读物"><a href="#推荐读物" class="headerlink" title="推荐读物"></a>推荐读物</h4><p><strong>建议富裕的童鞋还是支持正版ORZ</strong></p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>书名</th>
+<th>作者</th>
+<th>推荐理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://pan.baidu.com/s/1hsyKkFM" target="_blank" rel="external">iOS开发进阶</a></td>
+<td>唐巧</td>
+<td>巧大经典之作，适合入门开发  暗号：t6g7</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1eSI1dmy" target="_blank" rel="external">iOS应用逆向工程</a></td>
+<td>沙梓社，吴航</td>
+<td>一本从逆向思维着手研究APP的书，很有意思 暗号：r3vb</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1nvOsyFZ" target="_blank" rel="external">iOS应用安全攻防实战</a></td>
+<td>Jonathan Zdziarski</td>
+<td>掌握iOS应用攻防思路和技巧，了解攻防两端思路，<br>有助于开发者以不变应万变 暗号：4ivs</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1slUVQRb" target="_blank" rel="external">Effective Objective-C 2.0</a></td>
+<td>Matt Galloway</td>
+<td>适合有一点实战经验的coder补充知识，翻译略有出入 暗号：daar</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1qXPXWGs" target="_blank" rel="external">剑指offer 名企面试官精讲典型编程题</a></td>
+<td>何海涛</td>
+<td>应届生面试必备，刷题宝典 暗号：gp5a</td>
+</tr>
+</tbody>
+</table>
+<h3 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h3><table>
+<thead>
+<tr>
+<th>博客</th>
+<th>推荐理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://www.henishuo.com/" target="_blank" rel="external">标哥的技术博客</a></td>
+<td>善于收藏分享的一个博主，里面的内容涵盖绝大部分iOS开发的知识</td>
+</tr>
+<tr>
+<td><a href="http://blog.devtang.com/" target="_blank" rel="external">唐巧的博客</a></td>
+<td>知名iOS开发大佬，猿题库作者</td>
+</tr>
+<tr>
+<td><a href="http://blog.ibireme.com/" target="_blank" rel="external">ibireme的博客</a></td>
+<td>YYkit作者，现在滴滴，里面有很多yy系列第三方涉及到的知识</td>
+</tr>
+<tr>
+<td><a href="https://onevcat.com/" target="_blank" rel="external">喵神博客</a></td>
+<td>王巍博客 知名大佬VVDocumenter作者 swifter 以及函数式swift作者 </td>
+</tr>
+<tr>
+<td><a href="http://blog.sunnyxx.com/" target="_blank" rel="external">sunnyxx的博客</a></td>
+<td>孙源的博客，现就职于滴滴。各种黑魔法丛出不穷</td>
+</tr>
+</tbody>
+</table>
+<p>  <a href=""></a></p>
+<h3 id="常用必备软件"><a href="#常用必备软件" class="headerlink" title="常用必备软件"></a>常用必备软件</h3><p><strong>没有链接的均是可以从AppStore下载的</strong></p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推荐理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.sourcetreeapp.com/" target="_blank" rel="external">SourceTree</a></td>
+<td>git桌面化管理工具，免费方便简单实用</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1c2hXvGG" target="_blank" rel="external">Reveal</a></td>
+<td>分析View结构层次利器 配合越狱手机更佳 暗号：e96s</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1o8eVgmA" target="_blank" rel="external">snip</a></td>
+<td>截图软件 暗号:n8m2</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1mhT3RIC" target="_blank" rel="external">licecap</a></td>
+<td>gif动图截图工具 暗号：k3ee</td>
+</tr>
+<tr>
+<td><a href="http://zh.mweb.im/" target="_blank" rel="external">MWeb Lite</a></td>
+<td>国人出品 Markdown 写作工具</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1pKE4F1L" target="_blank" rel="external">Flux</a></td>
+<td>护眼神器，屏幕暖色调跟随地区时间变化颜色 暗号：t1wq</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1qYvMaQw" target="_blank" rel="external">ShadowsocksX</a></td>
+<td>翻墙利器  网速稳定收费合理 暗号：8rkh<br> <a href="http://www.ishadowsocks.net" target="_blank" rel="external">体验账号</a> 6小时换一次密码</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1jI6hA4Y" target="_blank" rel="external">CleanMyMac3</a></td>
+<td>清理电脑必备 暗号:87tv（记得把xcode设为白名单）</td>
+</tr>
+<tr>
+<td><a href="http://music.163.com/#/download" target="_blank" rel="external">网易云音乐</a></td>
+<td>深夜听歌敲代码，快乐似神仙 (关注<a href="http://music.163.com/#/playlist?id=315962089" target="_blank" rel="external">Dirk丶Chen</a>有惊喜）</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1slxLQep" target="_blank" rel="external">CocoaPods</a></td>
+<td>新出的CocoaPods 界面化工具 暗号：njip</td>
+</tr>
+<tr>
+<td><a href="http://pan.baidu.com/s/1gf79EdP" target="_blank" rel="external">ALfred2.8</a></td>
+<td>十分好用的搜索工具 暗号:4u8q</td>
+</tr>
+<tr>
+<td>Xmind</td>
+<td>制作思维导图神器 </td>
+</tr>
+<tr>
+<td>dash</td>
+<td>看官方文档必备工具，方便快捷<a href="http://pan.baidu.com/s/1c2z8pWk" target="_blank" rel="external">官方文档</a>暗号：2t8w</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用第三方框架"><a href="#常用第三方框架" class="headerlink" title="常用第三方框架"></a>常用第三方框架</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AFNetworking</td>
+<td>网络必备</td>
+</tr>
+<tr>
+<td>Masonry</td>
+<td>Autolayout手写库TOP1，没有之一</td>
+</tr>
+<tr>
+<td>SnapKit</td>
+<td>Autolayout手写库Swift版</td>
+</tr>
+<tr>
+<td>YYkit系列</td>
+<td>包含YYImage YYModel YYCache 等一堆超级好用的框架 。强烈推荐给大家</td>
+</tr>
+<tr>
+<td>SDWebImage</td>
+<td>图片异步下载以及缓存管理</td>
+</tr>
+<tr>
+<td>MBProgressHUD</td>
+<td>常用HUD组件</td>
+</tr>
+<tr>
+<td>SVProgressHUD</td>
+<td>常用HUD组件，个人推荐</td>
+</tr>
+<tr>
+<td>MJRefresh</td>
+<td>常用的下拉刷新 十分好用</td>
+</tr>
+<tr>
+<td>JSPatch</td>
+<td>为项目动态添加模块，或替换项目原生代码动态修复 bug</td>
+</tr>
+<tr>
+<td><a href="https://realm.io/" target="_blank" rel="external">Realm</a></td>
+<td>十分强大的一个数据库</td>
+</tr>
+<tr>
+<td>ReactiveCocoa</td>
+<td>大名鼎鼎的RAC 目前还没接触到，但是很流弊</td>
+</tr>
+</tbody>
+</table>
+<h3 id="常用Xcode插件"><a href="#常用Xcode插件" class="headerlink" title="常用Xcode插件"></a>常用Xcode插件</h3><p>建议先从github上下载Alcatraz安装，然后从Alcatraz中安装其他插件</p>
+<hr>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/alcatraz/Alcatraz" target="_blank" rel="external">Alcatraz</a></td>
+<td>xcode插件管理工具</td>
+</tr>
+<tr>
+<td>CocoaPods</td>
+<td>第三方框架管理工具</td>
+</tr>
+<tr>
+<td>Backlight</td>
+<td>当前编辑代码行显示高亮可自定义颜色</td>
+</tr>
+<tr>
+<td>BBUDebuggerTuckAway</td>
+<td>当编辑代码时自动隐藏bug栏简单实用</td>
+</tr>
+<tr>
+<td>FuzzyAutocomplete</td>
+<td>只能模糊联想函数方法名称</td>
+</tr>
+<tr>
+<td>KSImageNamed</td>
+<td>图片名称自动填写显示对应图片，方便快捷</td>
+</tr>
+<tr>
+<td>VVDocumenter</td>
+<td>不多说，喵神大作。帮助你快速编写符合规范的注释</td>
+</tr>
+<tr>
+<td>XAlign</td>
+<td>很好用的格式自动对齐插件</td>
+</tr>
+</tbody>
+</table>
+<h3 id="优质DEMO"><a href="#优质DEMO" class="headerlink" title="优质DEMO"></a>优质DEMO</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>简介</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><a href=""></a></p>
+<h3 id="优质学习链接"><a href="#优质学习链接" class="headerlink" title="优质学习链接"></a>优质学习链接</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>推荐理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/ChenYilong/iOSInterviewQuestions" target="_blank" rel="external">iOS面试题集锦</a></td>
+<td>共有55道题，题目都是质量很高的面试题</td>
+</tr>
+<tr>
+<td><a href="http://swifter.tips/" target="_blank" rel="external">Swifter - 100 个 Swift 必备 tips</a></td>
+<td>喵神写的关于Swift的小技巧，内容十分丰富，推荐购买正版</td>
+</tr>
+<tr>
+<td><a href="http://objccn.io/" target="_blank" rel="external">objc中国</a></td>
+<td>内容丰富的OC学习网站，虽然现已停刊，但是里面的内容仍值得拜读</td>
+</tr>
+<tr>
+<td><a href="http://tech.meituan.com/" target="_blank" rel="external">美团点评技术团队</a></td>
+<td>经常分享一些干货知识 </td>
+</tr>
+<tr>
+<td><a href="http://lib.csdn.net/base/31?source=blogtop" target="_blank" rel="external">CSDN算法与数据结构知识库</a></td>
+<td>自学算法和数据结构，知识面涵盖广泛</td>
+</tr>
+<tr>
+<td><a href="http://coolshell.cn/articles/5426.html?plg_nld=1&amp;plg_uin=1&amp;plg_auth=1&amp;plg_nld=1&amp;plg_usr=1&amp;plg_vkey=1&amp;plg_dev=1" target="_blank" rel="external">VIM练级攻略</a></td>
+<td>自学VIM简明教程</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Hello World]]></title>
+      <url>http://lavender1026.github.io/2016/05/22/hello-world/</url>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    </entry>
+    
+  
+  
+</search>
