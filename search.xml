@@ -248,11 +248,39 @@
 </thead>
 <tbody>
 <tr>
-<td></td>
+<td><a href="https://github.com/mogujie/TeamTalk" target="_blank" rel="external">TeamTalk</a></td>
+<td>蘑菇街. 开源IM. 电商强烈推荐.</td>
+</tr>
+<tr>
+<td><a href="https://github.com/meilbn/MyOne-iOS" target="_blank" rel="external">MyOne-iOS</a></td>
+<td>用OC写的《一个》 iOS 客户端</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jiachenmu/Swift-BanTang" target="_blank" rel="external">IOS-Swift2.0</a></td>
+<td>高仿半糖App </td>
+</tr>
+<tr>
+<td><a href="https://github.com/lookingstars/meituan" target="_blank" rel="external">高仿美团iOS</a></td>
+<td>高仿美团</td>
+</tr>
+<tr>
+<td><a href="https://github.com/CatchChat/Yep" target="_blank" rel="external">Yep.swift</a></td>
+<td>Yep 一个由天才开发给天才们使用的社交软件。</td>
+</tr>
+<tr>
+<td><a href="https://github.com/renzifeng/ZFPlayer" target="_blank" rel="external">ZFPlayer</a></td>
+<td>基于AVPlayer，支持横屏、竖屏，上下滑动调节音量、屏幕亮度，左右滑动调节播放进度</td>
+</tr>
+<tr>
+<td><a href="https://github.com/ZhongTaoTian/LoveFreshBeen" target="_blank" rel="external">高仿爱鲜蜂</a></td>
+<td>高仿爱鲜蜂 - Swift2.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/callmejoejoe/XCFApp" target="_blank" rel="external">高仿下厨房</a></td>
+<td>高仿下厨房</td>
 </tr>
 </tbody>
 </table>
-<p><a href=""></a></p>
 <h2 id="优质学习链接"><a href="#优质学习链接" class="headerlink" title="优质学习链接"></a>优质学习链接</h2><table>
 <thead>
 <tr>
@@ -287,6 +315,7 @@
 </tr>
 </tbody>
 </table>
+<p>转载请注明出处！</p>
 ]]></content>
     </entry>
     
@@ -299,7 +328,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 <p>也应该改成</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo clean &amp;&amp; sudo hexo g &amp;&amp;  sudo hexo d</span><br></pre></td></tr></table></figure>
-<p>好了。基本上看到这里，前面的搭建已经做完。<br>现在就可以去买一个域名链接上你的git仓库，我推荐去<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云</a>买,方便快捷好管理。<br><br>买完了以后，点击进入控制台<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_3.png" alt="">，直接点击解析，然后按照这个方法进行设置<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_4.png" alt=""><br>注意，并不需要修改万网的DNS，CNAME A指向的git的IP<br>git的IP有两个192.30.252.153 和192.30.252.154 随意填写一个或者两个都填也可以<br>推荐的主题有<a href="http://theme-next.iissnan.com/getting-started.html#theme-settings" target="_blank" rel="external">NEXT</a>，按照步骤来基本上没有什么难度<br>最后如果你想添加图片，可以用图床来存储。这里建议使用<a href="http://www.qiniu.com/" target="_blank" rel="external">七牛</a>这里需要注意，采用七牛进行图床，建立一个空间的时候记得建成为公共空间，否则无法获取到外链地址。</p>
+<p>好了。基本上看到这里，前面的搭建已经做完。<br>现在就可以去买一个域名链接上你的git仓库，我推荐去<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云</a>买,方便快捷好管理。<br><br>买完了以后，点击进入控制台<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_3.png" alt="">，直接点击解析，然后按照这个方法进行设置<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_4.png" alt=""><br>注意，并不需要修改万网的DNS，CNAME A指向的git的IP<br>git的IP</p>
+<blockquote>
+<p>192.30.252.153<br>192.30.252.154</p>
+</blockquote>
+<p> 随意填写一个或者两个都填也可以<br>推荐的主题<a href="http://theme-next.iissnan.com/getting-started.html#theme-settings" target="_blank" rel="external">NEXT</a>，按照步骤来基本上没有什么难度<br>评论我是用的DISQUS<br> DISQUS注册完了以后，点击STARTED进行注册<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_10.png" alt=""><br> 只后会跳转到这个页面<br> <img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_5.png" alt=""><br> 注意Category填写Tech<br>填写完毕，跳到<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_9.png" alt=""><br>这里可以不用管setting up 直接点右边的personal site 之后的设置可以设置为默认选项，点完以后选择左边的General<br><img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_13.png" alt="">Website URL一栏填写你购买的域名，下面的language选中Chinese即可<br>最后如果你想添加图片，可以用图床来存储。这里建议使用<a href="http://www.qiniu.com/" target="_blank" rel="external">七牛</a>这里需要注意，采用七牛进行图床，建立一个空间的时候记得建成为公共空间，否则无法获取到外链地址。</p>
 <p>其他有什么补充的再说吧</p>
 <p>转载请注明出处！</p>
 ]]></content>
