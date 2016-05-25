@@ -4,12 +4,51 @@
   
     
     <entry>
+      <title><![CDATA[收藏的博客]]></title>
+      <url>http://lavender1026.github.io/2016/03/17/%E6%94%B6%E8%97%8F%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
+      <content type="html"><![CDATA[<p>整理一下自己看过的精品博客以及网站，都是质量不错的博客</p>
+<h2 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h2><ul>
+<li><a href="http://www.henishuo.com/" target="_blank" rel="external">标哥的技术博客</a> </li>
+<li><a href="http://blog.devtang.com/" target="_blank" rel="external">唐巧的博客</a> </li>
+<li><a href="http://blog.ibireme.com/" target="_blank" rel="external">ibireme的博客</a></li>
+<li><a href="https://onevcat.com/" target="_blank" rel="external">喵神博客</a></li>
+<li><a href="http://blog.sunnyxx.com/" target="_blank" rel="external">sunnyxx的博客</a> </li>
+<li><a href="http://blog.leichunfeng.com/" target="_blank" rel="external">雷纯锋的技术博客</a></li>
+<li><a href="http://swift.gg/" target="_blank" rel="external">SwiftGG 翻译组 - 高质量的 Swift 译文网站</a></li>
+<li><a href="http://swifter.tips/" target="_blank" rel="external">Swifter - 100 个 Swift 必备 tips</a> </li>
+<li><a href="http://objccn.io/" target="_blank" rel="external">objc中国</a> | 内容丰富的OC学习网站，虽然现已停刊，但是里面的内容仍值得拜读</li>
+<li><a href="http://tech.meituan.com/" target="_blank" rel="external">美团点评技术团队</a> | 经常分享一些干货知识 </li>
+<li><a href="http://nshipster.cn/" target="_blank" rel="external">NSHipster 中文</a></li>
+<li><a href="http://www.ios-wiki.com/" target="_blank" rel="external">iOS wiki</a> | 包含技术周报、好文章 、iOS 安全</li>
+<li><a href="http://www.jianshu.com/users/b82d2721ba07/latest_articles" target="_blank" rel="external">叶孤城_ - 简书</a></li>
+<li><a href="http://southpeak.github.io/" target="_blank" rel="external">南峰子的技术博客</a></li>
+<li><a href="http://tutuge.me/" target="_blank" rel="external">土土哥的技术 Blog</a></li>
+<li><a href="http://beyondvincent.com/" target="_blank" rel="external">破船之家</a></li>
+<li><a href="http://app.memect.com/" target="_blank" rel="external">APP日报</a></li>
+<li><a href="http://yulingtianxia.com/" target="_blank" rel="external">玉令天下的博客</a></li>
+<li><a href="https://bestswifter.com/" target="_blank" rel="external">bestswifter的博客</a></li>
+<li><a href="http://lastdays.cn/" target="_blank" rel="external">LastDays的博客</a></li>
+<li><a href="http://www.jianshu.com/users/40e4dced948f/latest_articles" target="_blank" rel="external">kuailejim</a> | wujim</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Debug小宝典]]></title>
+      <url>http://lavender1026.github.io/2016/02/20/Debug%E5%B0%8F%E5%AE%9D%E5%85%B8/</url>
+      <content type="html"><![CDATA[<h2 id="0"><a href="#0" class="headerlink" title="0"></a>0</h2><p>崩溃报错有时会直接蹦在UIApplicationMain()或者UIApplicationDelegate()这些初始方法中，而LOG中的报错的原因也仅仅是数组越界问题。</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p>0.<a href="http://weibo.com/1745945040/CpBv73dSR?type=comment#_rnd1436172574844" target="_blank" rel="external">戴铭</a><br><a href="http://meilbn.com/2015/07/06/iOS-Xcode-Debug-Skills-0x00/#comments" target="_blank" rel="external">Happy Hacking</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[iOS百宝箱]]></title>
       <url>http://lavender1026.github.io/2016/01/17/iOS%E7%99%BE%E5%AE%9D%E7%AE%B1/</url>
-      <content type="html"><![CDATA[<h1 id="iOS百宝箱"><a href="#iOS百宝箱" class="headerlink" title="iOS百宝箱"></a>iOS百宝箱</h1><h3 id="入门视频推荐"><a href="#入门视频推荐" class="headerlink" title="入门视频推荐"></a>入门视频推荐</h3><p>   <a href="http://pan.baidu.com/s/1cHnl2u" target="_blank" rel="external">算法与数据结构</a>密码: bhhi          </p>
+      <content type="html"><![CDATA[<h1 id="iOS百宝箱"><a href="#iOS百宝箱" class="headerlink" title="iOS百宝箱"></a>iOS百宝箱</h1><p>自己总结了一下iOS开发中读过的书，用过的软件，开发中常用的框架插件以及github上优质的DEMO</p>
+<h3 id="入门视频推荐"><a href="#入门视频推荐" class="headerlink" title="入门视频推荐"></a>入门视频推荐</h3><p>   <a href="http://pan.baidu.com/s/1cHnl2u" target="_blank" rel="external">算法与数据结构</a>密码: bhhi          </p>
 <p>   <a href="http://open.163.com/special/opencourse/ios8.html" target="_blank" rel="external">斯坦福大学公开课iOS8全12集</a>  </p>
 <p>   <a href="https://itunes.apple.com/cn/course/developing-ios-9-apps-swift/id1104579961" target="_blank" rel="external">斯坦福大学公开课iOS9Swift版</a> 没字幕，白胡子老爷爷的视频，适合英语水平不错的童鞋<br><a id="more"></a></p>
-<h2 id="推荐读物"><a href="#推荐读物" class="headerlink" title="推荐读物"></a>推荐读物</h2><p><strong>建议富裕的童鞋还是支持正版ORZ</strong></p>
+<h2 id="推荐读物"><a href="#推荐读物" class="headerlink" title="推荐读物"></a>推荐读物</h2><p><strong>建议富裕的童鞋还是购买纸质书，支持正版ORZ</strong></p>
 <hr>
 <table>
 <thead>
@@ -44,36 +83,6 @@
 <td><a href="http://pan.baidu.com/s/1qXPXWGs" target="_blank" rel="external">剑指offer 名企面试官精讲典型编程题</a></td>
 <td>何海涛</td>
 <td>应届生面试必备，刷题宝典 暗号：gp5a</td>
-</tr>
-</tbody>
-</table>
-<h2 id="推荐博客"><a href="#推荐博客" class="headerlink" title="推荐博客"></a>推荐博客</h2><table>
-<thead>
-<tr>
-<th>博客</th>
-<th>推荐理由</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="http://www.henishuo.com/" target="_blank" rel="external">标哥的技术博客</a></td>
-<td>善于收藏分享的一个博主，里面的内容涵盖绝大部分iOS开发的知识</td>
-</tr>
-<tr>
-<td><a href="http://blog.devtang.com/" target="_blank" rel="external">唐巧的博客</a></td>
-<td>知名iOS开发大佬，猿题库作者</td>
-</tr>
-<tr>
-<td><a href="http://blog.ibireme.com/" target="_blank" rel="external">ibireme的博客</a></td>
-<td>YYkit作者，现在滴滴，里面有很多yy系列第三方涉及到的知识</td>
-</tr>
-<tr>
-<td><a href="https://onevcat.com/" target="_blank" rel="external">喵神博客</a></td>
-<td>王巍博客 知名大佬VVDocumenter作者 swifter 以及函数式swift作者 </td>
-</tr>
-<tr>
-<td><a href="http://blog.sunnyxx.com/" target="_blank" rel="external">sunnyxx的博客</a></td>
-<td>孙源的博客，现就职于滴滴。各种黑魔法丛出不穷</td>
 </tr>
 </tbody>
 </table>
@@ -132,6 +141,10 @@
 <td>十分好用的搜索工具 暗号:4u8q</td>
 </tr>
 <tr>
+<td><a href="">Charles</a></td>
+<td>常用抓包工具</td>
+</tr>
+<tr>
 <td>Xmind</td>
 <td>制作思维导图神器 </td>
 </tr>
@@ -179,7 +192,7 @@
 </tr>
 <tr>
 <td>MJRefresh</td>
-<td>常用的下拉刷新 十分好用</td>
+<td>好用的下拉刷新 十分好用</td>
 </tr>
 <tr>
 <td>JSPatch</td>
@@ -223,7 +236,7 @@
 </tr>
 <tr>
 <td>FuzzyAutocomplete</td>
-<td>只能模糊联想函数方法名称</td>
+<td>智能模糊联想函数方法名称</td>
 </tr>
 <tr>
 <td>KSImageNamed</td>
@@ -279,6 +292,10 @@
 <td><a href="https://github.com/callmejoejoe/XCFApp" target="_blank" rel="external">高仿下厨房</a></td>
 <td>高仿下厨房</td>
 </tr>
+<tr>
+<td><a href="https://github.com/singer1026/DMHeartFlyAnimation" target="_blank" rel="external">直播APP点赞</a></td>
+<td>直播app点赞功能</td>
+</tr>
 </tbody>
 </table>
 <h2 id="优质学习链接"><a href="#优质学习链接" class="headerlink" title="优质学习链接"></a>优质学习链接</h2><table>
@@ -292,18 +309,6 @@
 <tr>
 <td><a href="https://github.com/ChenYilong/iOSInterviewQuestions" target="_blank" rel="external">iOS面试题集锦</a></td>
 <td>共有55道题，题目都是质量很高的面试题</td>
-</tr>
-<tr>
-<td><a href="http://swifter.tips/" target="_blank" rel="external">Swifter - 100 个 Swift 必备 tips</a></td>
-<td>喵神写的关于Swift的小技巧，内容十分丰富，推荐购买正版</td>
-</tr>
-<tr>
-<td><a href="http://objccn.io/" target="_blank" rel="external">objc中国</a></td>
-<td>内容丰富的OC学习网站，虽然现已停刊，但是里面的内容仍值得拜读</td>
-</tr>
-<tr>
-<td><a href="http://tech.meituan.com/" target="_blank" rel="external">美团点评技术团队</a></td>
-<td>经常分享一些干货知识 </td>
 </tr>
 <tr>
 <td><a href="http://lib.csdn.net/base/31?source=blogtop" target="_blank" rel="external">CSDN算法与数据结构知识库</a></td>
@@ -328,11 +333,19 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 <p>也应该改成</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo clean &amp;&amp; sudo hexo g &amp;&amp;  sudo hexo d</span><br></pre></td></tr></table></figure>
-<p>好了。基本上看到这里，前面的搭建已经做完。<br>现在就可以去买一个域名链接上你的git仓库，我推荐去<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云</a>买,方便快捷好管理。<br><br>买完了以后，点击进入控制台<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_3.png" alt="">，直接点击解析，然后按照这个方法进行设置<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_4.png" alt=""><br>注意，并不需要修改万网的DNS，CNAME A指向的git的IP<br>git的IP</p>
+<p>好了。基本上看到这里，前面的搭建已经做完。推荐的主题<a href="http://theme-next.iissnan.com/getting-started.html#theme-settings" target="_blank" rel="external">NEXT</a>，按照步骤来基本上没有什么难度。</p>
+<h2 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h2><p>现在就可以去买一个域名链接上你的git仓库，我推荐去<a href="https://www.aliyun.com/" target="_blank" rel="external">阿里云</a>买,方便快捷好管理。<br><br>买完了以后，点击进入控制台<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_3.png" alt="">，直接点击解析，然后按照这个方法进行设置<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_4.png" alt=""><br>注意，并不需要修改万网的DNS，CNAME A指向的git的IP<br>git的IP</p>
 <blockquote>
 <p>192.30.252.153<br>192.30.252.154</p>
 </blockquote>
-<p> 随意填写一个或者两个都填也可以<br>推荐的主题<a href="http://theme-next.iissnan.com/getting-started.html#theme-settings" target="_blank" rel="external">NEXT</a>，按照步骤来基本上没有什么难度<br>评论我是用的DISQUS<br> DISQUS注册完了以后，点击STARTED进行注册<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_10.png" alt=""><br> 只后会跳转到这个页面<br> <img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_5.png" alt=""><br> 注意Category填写Tech<br>填写完毕，跳到<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_9.png" alt=""><br>这里可以不用管setting up 直接点右边的personal site 之后的设置可以设置为默认选项，点完以后选择左边的General<br><img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_13.png" alt="">Website URL一栏填写你购买的域名，下面的language选中Chinese即可<br>最后如果你想添加图片，可以用图床来存储。这里建议使用<a href="http://www.qiniu.com/" target="_blank" rel="external">七牛</a>这里需要注意，采用七牛进行图床，建立一个空间的时候记得建成为公共空间，否则无法获取到外链地址。</p>
+<p> 随意填写一个或者两个都填也可以<br> 然后回到你的github <img src="" alt="">点击这里创建一个名为CNAME的文件，内容填写你买的域名<br> 然后下载下来，将刚刚创建的CNAME放到博客文件夹的source中 从新执行一下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d -g</span><br></pre></td></tr></table></figure>
+<p>然后去浏览器里输入你的域名吧~~</p>
+<h2 id="评论"><a href="#评论" class="headerlink" title="评论"></a>评论</h2><p>评论我是用的DISQUS，DISQUS注册完了以后，点击STARTED进行注册<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_10.png" alt=""><br> 只后会跳转到这个页面<br> <img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_5.png" alt=""><br> 注意Category填写Tech<br>填写完毕，跳到<img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_9.png" alt=""><br>这里可以不用管setting up 直接点右边的personal site 之后的设置可以设置为默认选项，点完以后选择左边的General<br><img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_13.png" alt="">Website URL一栏填写你购买的域名，下面的language选中Chinese即可</p>
+<h2 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h2><p>最后如果你想添加图片，可以用图床来存储。这里建议使用<a href="http://www.qiniu.com/" target="_blank" rel="external">七牛</a>这里需要注意，采用七牛进行图床，建立一个空间的时候记得建成为公共空间，否则无法获取到外链地址。</p>
+<h2 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h2><p> 用markdown编辑工具新建一个.md 开头的格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title:          #本片博客内容（记得冒号后面添加一个空格）</span><br><span class="line">date: 2016-01-15 22:41:52   #创建时间</span><br><span class="line">tags:   #标签</span><br><span class="line"> - 博客   </span><br><span class="line"> - </span><br><span class="line">categories: 杂记   #分类</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<p>然后<br><code>hexo d -g</code></p>
 <p>其他有什么补充的再说吧</p>
 <p>转载请注明出处！</p>
 ]]></content>
