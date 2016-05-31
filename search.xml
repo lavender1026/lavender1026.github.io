@@ -298,6 +298,7 @@
 </tr>
 </tbody>
 </table>
+<p><a href="https://github.com/jiecao-fm/SwiftTheme" target="_blank" rel="external">主题换肤</a></p>
 <h2 id="优质学习链接"><a href="#优质学习链接" class="headerlink" title="优质学习链接"></a>优质学习链接</h2><table>
 <thead>
 <tr>
@@ -327,7 +328,7 @@
     <entry>
       <title><![CDATA[搭建博客那些事]]></title>
       <url>http://lavender1026.github.io/2016/01/15/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/</url>
-      <content type="html"><![CDATA[<p>网上有很多教程都不是很仔细，搭建博客的时候总有意想不到的问题，昨天捣鼓了许久，踩了很多坑。写下这篇博客来帮助一下更多的人。主要是针对几个坑来帮助一下大家</p>
+      <content type="html"><![CDATA[<p>很久之前就想把博客从CSDN上迁移过来，只是一直没有时间，最近比较闲就用hexo+git搭建了博客。<br>网上有很多教程都不是很仔细，搭建博客的时候总有意想不到的问题，昨天捣鼓了许久，踩了很多坑。写下这篇博客来帮助一下更多的人。主要是针对几个坑来帮助一下大家</p>
 <h2 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h2><p>博客的基本搭建可以参考这个<a href="http://www.jianshu.com/p/4eaddcbe4d12" target="_blank" rel="external">5分钟 搭建免费个人博客</a>教程。<br>讲解的十分详细<br><a id="more"></a></p>
 <p>针对几个hexo 命令<br><img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_2.png" alt=""><br>报的原因是因为没有获取权限 ，如果你的机器有密码，一般 都要 前面加上sudo 即可<br>而上文中的一个常用的命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
@@ -348,6 +349,108 @@
 <p>然后<br><code>hexo d -g</code></p>
 <p>其他有什么补充的再说吧</p>
 <p>转载请注明出处！</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Xcode小Tips]]></title>
+      <url>http://lavender1026.github.io/2015/10/25/%E5%B0%8FTips/</url>
+      <content type="html"><![CDATA[<p>整理一下自己开发过程中用到的小技巧小tips</p>
+<p>1，打印View所有子视图</p>
+<blockquote>
+<p>po [[self view]recursiveDescription]</p>
+</blockquote>
+<p>2，layoutSubviews调用的调用时机</p>
+<ul>
+<li>当视图第一次显示的时候会被调用</li>
+<li>当这个视图显示到屏幕上了,点击按钮</li>
+<li>添加子视图也会调用这个方法</li>
+<li>当本视图的大小发生改变的时候是会调用的</li>
+<li>当子视图的frame发生改变的时候是会调用的</li>
+<li>当删除子视图的时候是会调用的<a id="more"></a>
+</li>
+</ul>
+<p>3，NSString过滤特殊字符<br>// 定义一个特殊字符的集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:</span><br><span class="line">@&quot;@／：；（）¥「」＂、[]&#123;&#125;#%-*+=_\\|~＜＞$€^•&apos;@#$%^&amp;*()_+&apos;\&quot;&quot;];</span><br></pre></td></tr></table></figure>
+<p>// 过滤字符串的特殊字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *newString = [trimString stringByTrimmingCharactersInSet:set];</span><br></pre></td></tr></table></figure>
+<p>4，TransForm属性<br>//平移按钮</p>
+<blockquote>
+<p>CGAffineTransform transForm = self.buttonView.transform;<br>self.buttonView.transform = CGAffineTransformTranslate(transForm, 10, 0);</p>
+</blockquote>
+<p>//旋转按钮</p>
+<blockquote>
+<p>CGAffineTransform transForm = self.buttonView.transform;<br>self.buttonView.transform = CGAffineTransformRotate(transForm, M_PI_4);</p>
+</blockquote>
+<p>//缩放按钮</p>
+<blockquote>
+<p>self.buttonView.transform = CGAffineTransformScale(transForm, 1.2, 1.2);</p>
+</blockquote>
+<p>//初始化复位</p>
+<blockquote>
+<p>self.buttonView.transform = CGAffineTransformIdentity;</p>
+</blockquote>
+<p>5，去掉分割线多余15像素<br>首先在viewDidLoad方法加入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) &#123;</span><br><span class="line">        [self.tableView setSeparatorInset:UIEdgeInsetsZero];    </span><br><span class="line">&#125;   </span><br><span class="line"> if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) &#123;        </span><br><span class="line">        [self.tableView setLayoutMargins:UIEdgeInsetsZero];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在重写willDisplayCell方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell </span><br><span class="line">forRowAtIndexPath:(NSIndexPath *)indexPath&#123;   </span><br><span class="line">    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) &#123;       </span><br><span class="line">             [cell setSeparatorInset:UIEdgeInsetsZero];    </span><br><span class="line">    &#125;    </span><br><span class="line">    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) &#123;        </span><br><span class="line">             [cell setLayoutMargins:UIEdgeInsetsZero];    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6，计算方法耗时时间间隔<br>// 获取时间间隔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define TICK   CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();</span><br><span class="line">#define TOCK   NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)</span><br></pre></td></tr></table></figure>
+<p>7，Color颜色宏定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 随机颜色</span><br><span class="line">#define RANDOM_COLOR [UIColor colorWithRed:arc4random_uniform(256) / 255.0 green:arc4random_uniform(256) / 255.0 blue:arc4random_uniform(256) / 255.0 alpha:1]</span><br><span class="line">// 颜色(RGB)</span><br><span class="line">#define RGBCOLOR(r, g, b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:</span><br><span class="line">(b)/255.0f alpha:1]</span><br><span class="line">// 利用这种方法设置颜色和透明值，可不影响子视图背景色</span><br><span class="line">#define RGBACOLOR(r, g, b, a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]</span><br></pre></td></tr></table></figure>
+<p>8，Alert提示宏定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define Alert(_S_, ...) [[[UIAlertView alloc] initWithTitle:@&quot;提示&quot; message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@&quot;确定&quot; otherButtonTitles:nil] show]</span><br></pre></td></tr></table></figure>
+<p>9，让 iOS 应用直接退出</p>
+<pre><code>- (void)exitApplication {
+AppDelegate *app = [UIApplication sharedApplication].delegate;
+UIWindow *window = app.window;
+
+[UIView animateWithDuration:1.0f animations:^{
+    window.alpha = 0;
+} completion:^(BOOL finished) {
+    exit(0);
+}];}
+</code></pre><p>10，NSArray 快速求总和 最大值 最小值 和 平均值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSArray *array = [NSArray arrayWithObjects:@&quot;2.0&quot;, @&quot;2.3&quot;, @&quot;3.0&quot;, @&quot;4.0&quot;, @&quot;10&quot;, nil];</span><br><span class="line">CGFloat sum = [[array valueForKeyPath:@&quot;@sum.floatValue&quot;] floatValue];</span><br><span class="line">CGFloat avg = [[array valueForKeyPath:@&quot;@avg.floatValue&quot;] floatValue];</span><br><span class="line">CGFloat max =[[array valueForKeyPath:@&quot;@max.floatValue&quot;] floatValue];</span><br><span class="line">CGFloat min =[[array valueForKeyPath:@&quot;@min.floatValue&quot;] floatValue];</span><br><span class="line">NSLog(@&quot;%f\n%f\n%f\n%f&quot;,sum,avg,max,min);</span><br></pre></td></tr></table></figure>
+<p>11，修改Label中不同文字颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (void)touchesEnded:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    [self editStringColor:self.label.text editStr:@&quot;好&quot; color:[UIColor blueColor]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)editStringColor:(NSString *)string editStr:(NSString *)editStr color:(UIColor *)color &#123;</span><br><span class="line">    // string为整体字符串, editStr为需要修改的字符串</span><br><span class="line">    NSRange range = [string rangeOfString:editStr];</span><br><span class="line">	 NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:string];</span><br><span class="line"></span><br><span class="line">    // 设置属性修改字体颜色UIColor与大小UIFont</span><br><span class="line">    [attribute addAttributes:@&#123;NSForegroundColorAttributeName:color&#125; range:range];</span><br><span class="line"></span><br><span class="line">    self.label.attributedText = attribute;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>12，播放声音</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#import&lt;AVFoundation/AVFoundation.h&gt;</span><br><span class="line">//  1.获取音效资源的路径</span><br><span class="line">   NSString *path = [[NSBundle mainBundle]pathForResource:@&quot;pour_milk&quot; ofType:@&quot;wav&quot;];</span><br><span class="line">   //  2.将路劲转化为url</span><br><span class="line">   NSURL *tempUrl = [NSURL fileURLWithPath:path];</span><br><span class="line">   //  3.用转化成的url创建一个播放器</span><br><span class="line">   NSError *error = nil;</span><br><span class="line">   AVAudioPlayer *play = [[AVAudioPlayer alloc]initWithContentsOfURL:tempUrl error:&amp;error];</span><br><span class="line">   self.player = play;</span><br><span class="line">   //  4.播放</span><br><span class="line">   [play play];</span><br></pre></td></tr></table></figure>
+<p>13，检测是否IPad Pro</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isIpadPro</span><br><span class="line">&#123;   </span><br><span class="line">  UIScreen *Screen = [UIScreen mainScreen];   </span><br><span class="line">  CGFloat width = Screen.nativeBounds.size.width/Screen.nativeScale;  </span><br><span class="line">  CGFloat height = Screen.nativeBounds.size.height/Screen.nativeScale;         </span><br><span class="line">  BOOL isIpad =[[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;   </span><br><span class="line">  BOOL hasIPadProWidth = fabs(width - 1024.f) &lt; DBL_EPSILON;    </span><br><span class="line">  BOOL hasIPadProHeight = fabs(height - 1366.f) &lt; DBL_EPSILON;  </span><br><span class="line">  return isIpad &amp;&amp; hasIPadProHeight &amp;&amp; hasIPadProWidth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>14，修改Tabbar Item的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 修改标题位置</span><br><span class="line">  self.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -10);</span><br><span class="line"> // 修改图片位置</span><br><span class="line">  self.tabBarItem.imageInsets = UIEdgeInsetsMake(-3, 0, 3, 0);</span><br><span class="line"></span><br><span class="line"> // 批量修改属性</span><br><span class="line">  for (UIBarItem *item in self.tabBarController.tabBar.items) &#123;</span><br><span class="line">      [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:</span><br><span class="line">               [UIFont fontWithName:@&quot;Helvetica&quot; size:19.0], NSFontAttributeName, nil]</span><br><span class="line">                          forState:UIControlStateNormal];</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> // 设置选中和未选中字体颜色</span><br><span class="line"> [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];</span><br><span class="line"></span><br><span class="line"> //未选中字体颜色</span><br><span class="line"> [[UITabBarItem appearance] setTitleTextAttributes:@&#123;NSForegroundColorAttributeName:[UIColor greenColor]&#125; forState:UIControlStateNormal];</span><br><span class="line"></span><br><span class="line"> //选中字体颜色</span><br><span class="line"> [[UITabBarItem appearance] setTitleTextAttributes:@&#123;NSForegroundColorAttributeName:[UIColor cyanColor]&#125; forState:UIControlStateSelected];</span><br></pre></td></tr></table></figure>
+<p>15，NULL - nil - Nil - NSNULL的区别</p>
+<ul>
+<li><p>nil是OC的，空对象，地址指向空（0）的对象。对象的字面零值</p>
+</li>
+<li><p>Nil是Objective-C类的字面零值</p>
+</li>
+<li><p>NULL是C的，空地址，地址的数值是0，是个长整数</p>
+</li>
+<li><p>NSNull用于解决向NSArray和NSDictionary等集合中添加空值的问题</p>
+</li>
+</ul>
+<p>16，去掉BackBarButtonItem的文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)forBarMetrics:UIBarMetricsDefault];</span><br></pre></td></tr></table></figure>
+<p>17，控件不能交互的一些原因</p>
+<blockquote>
+<p>1，控件的userInteractionEnabled = NO<br>2，透明度小于等于0.01，aplpha<br>3，控件被隐藏的时候，hidden = YES<br>4，子视图的位置超出了父视图的有效范围，子视图无法交互，设置了。<br>5，需要交互的视图，被其他视图盖住（其他视图开启了用户交互）。</p>
+</blockquote>
+<p>18，修改UITextField中Placeholder的文字颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[text setValue:[UIColor redColor] forKeyPath:@&quot;_placeholderLabel.textColor&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>19，视图的生命周期<br>1、 alloc 创建对象，分配空间<br>2、 init (initWithNibName) 初始化对象，初始化数据<br>3、 loadView 从nib载入视图 ，除非你没有使用xib文件创建视图<br>4、 viewDidLoad 载入完成，可以进行自定义数据以及动态创建其他控件<br>5、 viewWillAppear视图将出现在屏幕之前，马上这个视图就会被展现在屏幕上了<br>6、 viewDidAppear 视图已在屏幕上渲染完成</p>
+<p>1、viewWillDisappear 视图将被从屏幕上移除之前执行<br>2、viewDidDisappear 视图已经被从屏幕上移除，用户看不到这个视图了<br>3、dealloc 视图被销毁，此处需要对你在init和viewDidLoad中创建的对象进行释放.</p>
+<p>viewVillUnload－ 当内存过低，即将释放时调用；<br>viewDidUnload－当内存过低，释放一些不需要的视图时调用。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[分类与EXtension的前世今生]]></title>
+      <url>http://lavender1026.github.io/2015/07/17/%E5%88%86%E7%B1%BB%E4%B8%8EEXtension%E7%9A%84%E5%89%8D%E4%B8%96%E4%BB%8A%E7%94%9F/</url>
+      <content type="html"><![CDATA[<p>category &amp; extension</p>
+<p>苹果推荐分类的使用<br>    •    1.给已经存在的类添加方法<br>    •    2.把类的实现分开在几个不同文件中<br>    ◦    减少单个文件的体积<br>    ◦    把不同功能组织到不同的category里<br>    ◦    多个开发者共同完成一个类<br>    ◦    按照需求加载想要的category<br>    •    3.声明私有方法<br>除此之外，我们还可以转换思想，将category使用到如下地方：<br>    •    4.模仿多继承<br>    •    5.把framework的私有方法分开<br>    <a id="more"></a></p>
+<p>category和extension区别1<br>    •    category: 类别，分类<br>    ◦    专门用来给类添加新的方法<br>    ◦    不能给类添加成员属性，添加了成员变量，也无法取到<br>    ▪    注意：其实可以通过runtime给分类添加属性<br>    ◦    分类中用@property定义变量，只会生成变量的getter，setter方法的声明，不能生成方法实现和带下划线的成员变量。<br>    •    extension：类扩展<br>    ◦    可以说成是特殊的分类，也称作匿名分类<br>    ◦    可以给类添加成员属性，但是是私有变量<br>    ◦    可以给类添加方法，也是私有方法<br>category和extension区别2<br>虽然有人说extension是一个特殊的category，也有人将extension叫做匿名分类，但是其实两者差别很大。<br>    •    extension<br>    ◦    在编译器决议，是类的一部分，在编译器和头文件的@interface和实现文件里的@implement一起形成了一个完整的类。<br>    ◦    伴随着类的产生而产生，也随着类的消失而消失。<br>    ◦    extension一般用来隐藏类的私有消息，你必须有一个类的源码才能添加一个类的extension，所以对于系统一些类，如nsstring，就无法添加类扩展<br>    •    category<br>    ◦    是运行期决议的<br>    ◦    类扩展可以添加实例变量，分类不能添加实例变量<br>    ◦    原因：因为在运行期，对象的内存布局已经确定，如果添加实例变量会破坏类的内部布局，这对编译性语言是灾难性的。<br>category底层结构<br>我们知道，所有OC类和对象，在runtime层都是用struct表示的，category在runtime层使用结构体category_t定义的，包含了如下：<br>    •    name 类名<br>    •    cls 类<br>    •    instanceMethods 对象方法<br>    •    classMethods 类方法<br>    •    protocols 协议列表<br>    •    instanceProperties 添加的所有属性<br>category加载<br>在runtime，系统会将包含的内容添加如下：<br>    •    把category的实力方法，协议，已经属性添加到类上<br>    •    把类方法和协议添加到metaclass<br>分类加载和方法调用顺序<br>    •    加载：先加载原类的+load方法，再加载分类的+load方法，若多个分类，则根据编译顺序加载<br>    •    调用：先调用分类的方法，再调用原类的方法，分类方法会覆盖原类的方法<br>分类覆盖类的方法<br>如果分类中的方法与类的方法同名，则将会覆盖类的方法，实现原理：分类的对象方法会添加到类的方法列表中，分类的方法会添加到类的相应方法列表中（对象方法添加到类的方法列表，类方法会添加到metaclass列表），而且排列顺序会与原类的同名方法排在一起，且在原类的同名方法的前面。方法调用时会根据顺序先找到第一同名方法就调用，因此会覆盖原类的同名方法。<br>分类中添加成员属性<br>在runtime层面可以通过关联对象为分类添加成员属性</p>
 ]]></content>
     </entry>
     

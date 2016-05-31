@@ -1,0 +1,648 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>Xcode小Tips | Lavender</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="DirkChen">
+    
+
+    
+    <meta name="description" content="整理一下自己开发过程中用到的小技巧小tips
+1，打印View所有子视图
+
+po [[self view]recursiveDescription]
+
+2，layoutSubviews调用的调用时机
+
+当视图第一次显示的时候会被调用
+当这个视图显示到屏幕上了,点击按钮
+添加子视图也会调用这个方法
+当本视图的大小发生改变的时候是会调用的
+当子视图的frame发生改变的时候是会调用的
+当删除子视图的时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xcode小Tips">
+<meta property="og:url" content="http://lavender1026.github.io/2015/10/25/小Tips/index.html">
+<meta property="og:site_name" content="Lavender">
+<meta property="og:description" content="整理一下自己开发过程中用到的小技巧小tips
+1，打印View所有子视图
+
+po [[self view]recursiveDescription]
+
+2，layoutSubviews调用的调用时机
+
+当视图第一次显示的时候会被调用
+当这个视图显示到屏幕上了,点击按钮
+添加子视图也会调用这个方法
+当本视图的大小发生改变的时候是会调用的
+当子视图的frame发生改变的时候是会调用的
+当删除子视图的时">
+<meta property="og:updated_time" content="2016-05-31T08:04:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Xcode小Tips">
+<meta name="twitter:description" content="整理一下自己开发过程中用到的小技巧小tips
+1，打印View所有子视图
+
+po [[self view]recursiveDescription]
+
+2，layoutSubviews调用的调用时机
+
+当视图第一次显示的时候会被调用
+当这个视图显示到屏幕上了,点击按钮
+添加子视图也会调用这个方法
+当本视图的大小发生改变的时候是会调用的
+当子视图的frame发生改变的时候是会调用的
+当删除子视图的时">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Lavender" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/phone.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/phone.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="Lavender" title="Lavender"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="Lavender">Lavender</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About Me</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:lavender1026.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/10/25/小Tips/" title="Xcode小Tips" itemprop="url">Xcode小Tips</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
+		
+  <p class="article-time">
+    <time datetime="2015-10-24T18:10:02.000Z" itemprop="datePublished"> 发表于 2015-10-25</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			
+		
+		</div>
+		
+		<p>整理一下自己开发过程中用到的小技巧小tips</p>
+<p>1，打印View所有子视图</p>
+<blockquote>
+<p>po [[self view]recursiveDescription]</p>
+</blockquote>
+<p>2，layoutSubviews调用的调用时机</p>
+<ul>
+<li>当视图第一次显示的时候会被调用</li>
+<li>当这个视图显示到屏幕上了,点击按钮</li>
+<li>添加子视图也会调用这个方法</li>
+<li>当本视图的大小发生改变的时候是会调用的</li>
+<li>当子视图的frame发生改变的时候是会调用的</li>
+<li>当删除子视图的时候是会调用的<a id="more"></a>
+</li>
+</ul>
+<p>3，NSString过滤特殊字符<br>// 定义一个特殊字符的集合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:</span><br><span class="line">@&quot;@／：；（）¥「」＂、[]&#123;&#125;#%-*+=_\\|~＜＞$€^•&apos;@#$%^&amp;*()_+&apos;\&quot;&quot;];</span><br></pre></td></tr></table></figure>
+<p>// 过滤字符串的特殊字符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NSString *newString = [trimString stringByTrimmingCharactersInSet:set];</span><br></pre></td></tr></table></figure>
+<p>4，TransForm属性<br>//平移按钮</p>
+<blockquote>
+<p>CGAffineTransform transForm = self.buttonView.transform;<br>self.buttonView.transform = CGAffineTransformTranslate(transForm, 10, 0);</p>
+</blockquote>
+<p>//旋转按钮</p>
+<blockquote>
+<p>CGAffineTransform transForm = self.buttonView.transform;<br>self.buttonView.transform = CGAffineTransformRotate(transForm, M_PI_4);</p>
+</blockquote>
+<p>//缩放按钮</p>
+<blockquote>
+<p>self.buttonView.transform = CGAffineTransformScale(transForm, 1.2, 1.2);</p>
+</blockquote>
+<p>//初始化复位</p>
+<blockquote>
+<p>self.buttonView.transform = CGAffineTransformIdentity;</p>
+</blockquote>
+<p>5，去掉分割线多余15像素<br>首先在viewDidLoad方法加入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) &#123;</span><br><span class="line">        [self.tableView setSeparatorInset:UIEdgeInsetsZero];    </span><br><span class="line">&#125;   </span><br><span class="line"> if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) &#123;        </span><br><span class="line">        [self.tableView setLayoutMargins:UIEdgeInsetsZero];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在重写willDisplayCell方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell </span><br><span class="line">forRowAtIndexPath:(NSIndexPath *)indexPath&#123;   </span><br><span class="line">    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) &#123;       </span><br><span class="line">             [cell setSeparatorInset:UIEdgeInsetsZero];    </span><br><span class="line">    &#125;    </span><br><span class="line">    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) &#123;        </span><br><span class="line">             [cell setLayoutMargins:UIEdgeInsetsZero];    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6，计算方法耗时时间间隔<br>// 获取时间间隔</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define TICK   CFAbsoluteTime start = CFAbsoluteTimeGetCurrent();</span><br><span class="line">#define TOCK   NSLog(@&quot;Time: %f&quot;, CFAbsoluteTimeGetCurrent() - start)</span><br></pre></td></tr></table></figure>
+<p>7，Color颜色宏定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 随机颜色</span><br><span class="line">#define RANDOM_COLOR [UIColor colorWithRed:arc4random_uniform(256) / 255.0 green:arc4random_uniform(256) / 255.0 blue:arc4random_uniform(256) / 255.0 alpha:1]</span><br><span class="line">// 颜色(RGB)</span><br><span class="line">#define RGBCOLOR(r, g, b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:</span><br><span class="line">(b)/255.0f alpha:1]</span><br><span class="line">// 利用这种方法设置颜色和透明值，可不影响子视图背景色</span><br><span class="line">#define RGBACOLOR(r, g, b, a) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:(a)]</span><br></pre></td></tr></table></figure>
+<p>8，Alert提示宏定义</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#define Alert(_S_, ...) [[[UIAlertView alloc] initWithTitle:@&quot;提示&quot; message:[NSString stringWithFormat:(_S_), ##__VA_ARGS__] delegate:nil cancelButtonTitle:@&quot;确定&quot; otherButtonTitles:nil] show]</span><br></pre></td></tr></table></figure>
+<p>9，让 iOS 应用直接退出</p>
+<pre><code>- (void)exitApplication {
+AppDelegate *app = [UIApplication sharedApplication].delegate;
+UIWindow *window = app.window;
+
+[UIView animateWithDuration:1.0f animations:^{
+    window.alpha = 0;
+} completion:^(BOOL finished) {
+    exit(0);
+}];}
+</code></pre><p>10，NSArray 快速求总和 最大值 最小值 和 平均值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NSArray *array = [NSArray arrayWithObjects:@&quot;2.0&quot;, @&quot;2.3&quot;, @&quot;3.0&quot;, @&quot;4.0&quot;, @&quot;10&quot;, nil];</span><br><span class="line">CGFloat sum = [[array valueForKeyPath:@&quot;@sum.floatValue&quot;] floatValue];</span><br><span class="line">CGFloat avg = [[array valueForKeyPath:@&quot;@avg.floatValue&quot;] floatValue];</span><br><span class="line">CGFloat max =[[array valueForKeyPath:@&quot;@max.floatValue&quot;] floatValue];</span><br><span class="line">CGFloat min =[[array valueForKeyPath:@&quot;@min.floatValue&quot;] floatValue];</span><br><span class="line">NSLog(@&quot;%f\n%f\n%f\n%f&quot;,sum,avg,max,min);</span><br></pre></td></tr></table></figure>
+<p>11，修改Label中不同文字颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">- (void)touchesEnded:(NSSet&lt;UITouch *&gt; *)touches withEvent:(UIEvent *)event</span><br><span class="line">&#123;</span><br><span class="line">    [self editStringColor:self.label.text editStr:@&quot;好&quot; color:[UIColor blueColor]];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)editStringColor:(NSString *)string editStr:(NSString *)editStr color:(UIColor *)color &#123;</span><br><span class="line">    // string为整体字符串, editStr为需要修改的字符串</span><br><span class="line">    NSRange range = [string rangeOfString:editStr];</span><br><span class="line">	 NSMutableAttributedString *attribute = [[NSMutableAttributedString alloc] initWithString:string];</span><br><span class="line"></span><br><span class="line">    // 设置属性修改字体颜色UIColor与大小UIFont</span><br><span class="line">    [attribute addAttributes:@&#123;NSForegroundColorAttributeName:color&#125; range:range];</span><br><span class="line"></span><br><span class="line">    self.label.attributedText = attribute;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>12，播放声音</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#import&lt;AVFoundation/AVFoundation.h&gt;</span><br><span class="line">//  1.获取音效资源的路径</span><br><span class="line">   NSString *path = [[NSBundle mainBundle]pathForResource:@&quot;pour_milk&quot; ofType:@&quot;wav&quot;];</span><br><span class="line">   //  2.将路劲转化为url</span><br><span class="line">   NSURL *tempUrl = [NSURL fileURLWithPath:path];</span><br><span class="line">   //  3.用转化成的url创建一个播放器</span><br><span class="line">   NSError *error = nil;</span><br><span class="line">   AVAudioPlayer *play = [[AVAudioPlayer alloc]initWithContentsOfURL:tempUrl error:&amp;error];</span><br><span class="line">   self.player = play;</span><br><span class="line">   //  4.播放</span><br><span class="line">   [play play];</span><br></pre></td></tr></table></figure>
+<p>13，检测是否IPad Pro</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- (BOOL)isIpadPro</span><br><span class="line">&#123;   </span><br><span class="line">  UIScreen *Screen = [UIScreen mainScreen];   </span><br><span class="line">  CGFloat width = Screen.nativeBounds.size.width/Screen.nativeScale;  </span><br><span class="line">  CGFloat height = Screen.nativeBounds.size.height/Screen.nativeScale;         </span><br><span class="line">  BOOL isIpad =[[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;   </span><br><span class="line">  BOOL hasIPadProWidth = fabs(width - 1024.f) &lt; DBL_EPSILON;    </span><br><span class="line">  BOOL hasIPadProHeight = fabs(height - 1366.f) &lt; DBL_EPSILON;  </span><br><span class="line">  return isIpad &amp;&amp; hasIPadProHeight &amp;&amp; hasIPadProWidth;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>14，修改Tabbar Item的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">// 修改标题位置</span><br><span class="line">  self.tabBarItem.titlePositionAdjustment = UIOffsetMake(0, -10);</span><br><span class="line"> // 修改图片位置</span><br><span class="line">  self.tabBarItem.imageInsets = UIEdgeInsetsMake(-3, 0, 3, 0);</span><br><span class="line"></span><br><span class="line"> // 批量修改属性</span><br><span class="line">  for (UIBarItem *item in self.tabBarController.tabBar.items) &#123;</span><br><span class="line">      [item setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:</span><br><span class="line">               [UIFont fontWithName:@&quot;Helvetica&quot; size:19.0], NSFontAttributeName, nil]</span><br><span class="line">                          forState:UIControlStateNormal];</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> // 设置选中和未选中字体颜色</span><br><span class="line"> [[UITabBar appearance] setShadowImage:[[UIImage alloc] init]];</span><br><span class="line"></span><br><span class="line"> //未选中字体颜色</span><br><span class="line"> [[UITabBarItem appearance] setTitleTextAttributes:@&#123;NSForegroundColorAttributeName:[UIColor greenColor]&#125; forState:UIControlStateNormal];</span><br><span class="line"></span><br><span class="line"> //选中字体颜色</span><br><span class="line"> [[UITabBarItem appearance] setTitleTextAttributes:@&#123;NSForegroundColorAttributeName:[UIColor cyanColor]&#125; forState:UIControlStateSelected];</span><br></pre></td></tr></table></figure>
+<p>15，NULL - nil - Nil - NSNULL的区别</p>
+<ul>
+<li><p>nil是OC的，空对象，地址指向空（0）的对象。对象的字面零值</p>
+</li>
+<li><p>Nil是Objective-C类的字面零值</p>
+</li>
+<li><p>NULL是C的，空地址，地址的数值是0，是个长整数</p>
+</li>
+<li><p>NSNull用于解决向NSArray和NSDictionary等集合中添加空值的问题</p>
+</li>
+</ul>
+<p>16，去掉BackBarButtonItem的文字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60)forBarMetrics:UIBarMetricsDefault];</span><br></pre></td></tr></table></figure>
+<p>17，控件不能交互的一些原因</p>
+<blockquote>
+<p>1，控件的userInteractionEnabled = NO<br>2，透明度小于等于0.01，aplpha<br>3，控件被隐藏的时候，hidden = YES<br>4，子视图的位置超出了父视图的有效范围，子视图无法交互，设置了。<br>5，需要交互的视图，被其他视图盖住（其他视图开启了用户交互）。</p>
+</blockquote>
+<p>18，修改UITextField中Placeholder的文字颜色</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[text setValue:[UIColor redColor] forKeyPath:@&quot;_placeholderLabel.textColor&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>19，视图的生命周期<br>1、 alloc 创建对象，分配空间<br>2、 init (initWithNibName) 初始化对象，初始化数据<br>3、 loadView 从nib载入视图 ，除非你没有使用xib文件创建视图<br>4、 viewDidLoad 载入完成，可以进行自定义数据以及动态创建其他控件<br>5、 viewWillAppear视图将出现在屏幕之前，马上这个视图就会被展现在屏幕上了<br>6、 viewDidAppear 视图已在屏幕上渲染完成</p>
+<p>1、viewWillDisappear 视图将被从屏幕上移除之前执行<br>2、viewDidDisappear 视图已经被从屏幕上移除，用户看不到这个视图了<br>3、dealloc 视图被销毁，此处需要对你在init和viewDidLoad中创建的对象进行释放.</p>
+<p>viewVillUnload－ 当内存过低，即将释放时调用；<br>viewDidUnload－当内存过低，释放一些不需要的视图时调用。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/iOS开发/">iOS开发</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/iOS开发/">iOS开发</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://lavender1026.github.io/2015/10/25/小Tips/" data-title="Xcode小Tips | Lavender" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/01/15/搭建博客的那些事/" title="搭建博客那些事">
+  <strong>上一篇：</strong><br/>
+  <span>
+  搭建博客那些事</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/07/17/分类与EXtension的前世今生/"  title="分类与EXtension的前世今生">
+ <strong>下一篇：</strong><br/> 
+ <span>分类与EXtension的前世今生
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+<section id="comments" class="comment">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</section>
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ 
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/iOS开发/" title="iOS开发">iOS开发<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/工具/" title="工具">工具<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/杂记/" title="杂记">杂记<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/调试开发/" title="调试开发">调试开发<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/iOS开发/" title="iOS开发">iOS开发<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/博客/" title="博客">博客<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/debug/" title="debug">debug<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/常用软件/" title="常用软件">常用软件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/常用插件/" title="常用插件">常用插件<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/常用框架/" title="常用框架">常用框架<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/优质DEMO/" title="优质DEMO">优质DEMO<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://chaselan.com/" target="_blank" title="Chasel An‘s Blog">Chasel An‘s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> iOS开发爱好者，喜欢coding，音乐，动漫，吹水。产自泰安，暂居北京。&lt;br&gt;. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com//lavender1026" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		<a href="https://github.com/https://github.com/lavender1026" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		<a href="http://stackoverflow.com/users/6116235" target="_blank" class="icon-stack-overflow" title="stackoverflow"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:10073970@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="DirkChen">DirkChen</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+<script type="text/javascript">
+
+var disqus_shortname = 'dirkchen';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
