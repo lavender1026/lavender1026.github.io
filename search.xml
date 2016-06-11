@@ -32,6 +32,7 @@
 <li><a href="http://kittenyang.com/" target="_blank" rel="external">kitten时间胶囊</a></li>
 <li><a href="http://gracelancy.com/" target="_blank" rel="external">蓝晨钰的博客</a></li>
 <li><a href="http://www.tanhao.me/" target="_blank" rel="external">谭灏的博客</a> | ：目前就职于腾讯mac管家部门，他是一名 OSX、iOS 程序员，他的博客中有许多mac，ios开发的文章，值得大家去品读</li>
+<li><a href="http://baiduhidevios.github.io/" target="_blank" rel="external">百度hiios团队周报</a></li>
 </ul>
 ]]></content>
     </entry>
@@ -340,7 +341,7 @@
       <title><![CDATA[搭建博客那些事]]></title>
       <url>http://lavender1026.github.io/2016/01/15/%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%E9%82%A3%E4%BA%9B%E4%BA%8B/</url>
       <content type="html"><![CDATA[<p>很久之前就想把博客从CSDN上迁移过来，只是一直没有时间，最近比较闲就用hexo+git搭建了博客。<br>网上有很多教程都不是很仔细，搭建博客的时候总有意想不到的问题，昨天捣鼓了许久，踩了很多坑。写下这篇博客来帮助一下更多的人。主要是针对几个坑来帮助一下大家</p>
-<h2 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h2><p>博客的基本搭建可以参考这个<a href="http://www.jianshu.com/p/4eaddcbe4d12" target="_blank" rel="external">5分钟 搭建免费个人博客</a>教程。<br>讲解的十分详细<br><a id="more"></a></p>
+<h2 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h2><p>博客的基本搭建可以参考这个<a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">搭建免费个人博客</a>教程。<br>讲解的十分详细<br><a id="more"></a></p>
 <p>针对几个hexo 命令<br><img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_2.png" alt=""><br>报的原因是因为没有获取权限 ，如果你的机器有密码，一般 都要 前面加上sudo 即可<br>而上文中的一个常用的命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 <p>也应该改成</p>
