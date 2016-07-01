@@ -4,6 +4,158 @@
   
     
     <entry>
+      <title><![CDATA[蓝牙交互-Mutipeer Connectivity]]></title>
+      <url>http://lavender1026.github.io/2016/06/30/Mutipeer%20Connectivity/</url>
+      <content type="html"><![CDATA[<p>#Mutipeer Connectivity简介<br>iOS 7引入的一个全新框架 多点连接<br>替代GameKit框架 多用于文件的传输 </p>
+<p>#iOS设备不联网也能跟附近的人聊天<br>FireChat<br>See You Around<br>以上聊天App都是基于mutipeerConnectivity框架</p>
+<p>#搜索和传输的方式<br>双方WIFI和蓝牙都没有打开:无法实现<br>双方都开启蓝牙:通过蓝牙发现和传输<br>双方都开启WIFI:通过WIFI Direct发现和传输,速度接近AirDrop 双方同时开启了WIFI和蓝牙:模拟AirDrop,通过低功耗蓝牙技术扫描发现握手, 然后通过WIFI Direct传输<br><a id="more"></a></p>
+<p>#实际使用<br>连接设备</p>
+<p>#1.创建MCSession对象用于存放当前连接的会话<br>创建MCSession对象<br>initWithPeer:设备的ID<br>用于存放当前的连接的会话<br>self.mc_Session = [ [MCSession alloc]initWithPeer:[[MCPeerID alloc] initWithD<br>  开启广播对象,通知正在搜索的设备他们是可用的</p>
+<p>只要开启了可被搜索的广播,那么连接蓝牙按钮就不可点 </p>
+<ul>
+<li>(IBAction)foundConnect:(id)sender {<br>  UISwitch <em>switchBtn = (UISwitch </em>)sender;<br>  if (switchBtn.isOn) {// 广播对象,告诉其它的设备他们是可用的<br>if (self.advertiserAssistant == nil) {<br>// 创建广播对象<br>// initWithServiceType: 广播类型的标示(因为广播可能比较多,所以最好每 // session:当前会话<br>// discoveryInfo: 广播信息<br>self.advertiserAssistant = [[MCAdvertiserAssistant alloc] initWit<br>}<br>// 开启广播 [self.advertiserAssistant start]; self.connectBT.enabled = NO;<br>  }else{<pre><code>self.connectBT.enabled = YES;
+</code></pre>} }<br>#2.开始搜索蓝牙设备</li>
+<li>(IBAction)connectBlueTooth {<br>// 创建搜索蓝牙设备控制器<br>MCBrowserViewController *mbVC = [[MCBrowserViewController alloc]initWithS // 设置控制器代理<br>mbVC.delegate = self;<br>// 跳转到搜索控制器<br>[self presentViewController:mbVC animated:YES completion:nil];<br>}<br>选择数据</li>
+<li>(IBAction)selectImage {</li>
+</ul>
+<ol>
+<li>创建图片选择器<br>UIImagePickerController *imgPicker = [[UIImagePickerController alloc]init // 2. 判断图片选择器是否可用<br>if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControlle<br>// 选择器打开的类型<br>imgPicker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAl // 设置代理<br>imgPicker.delegate = self;</li>
+<li>打开图片选择器<br>[self presentViewController:imgPicker animated:YES completion:nil];<br>} }<br>图片选择器代理中获取数据<br>// 选择完毕调用</li>
+</ol>
+<ul>
+<li>(void)imagePickerController:(UIImagePickerController *)picker didFinishPick {<br>//<br>NSLog(@”info == %@”,info);<br>// 设置显示图片<br>self.showImage.image = info[UIImagePickerControllerOriginalImage]; // 隐藏图片显示器<br>[picker dismissViewControllerAnimated:YES completion:nil];<br>}<br>#在搜索控制器的连接完成的代理方法中隐藏搜索控制器<br>连接完成<br>@param browserViewController 搜索控制器 </li>
+<li><p>(void)browserViewControllerDidFinish:(MCBrowserViewController <em>)browserView<br>{<br>  [browserViewController dismissViewControllerAnimated:YES completion:nil];<br>  NSLog(@”%s %d”,<strong>func</strong>,<strong>LINE</strong>);<br>}<br>发送数据<br>实现搜索控制器的代理方法,获取连接上的设备ID<br>#pragma mark - MCBrowserViewControllerDelegate<br>/*</em></p>
+<h1 id="连接成功"><a href="#连接成功" class="headerlink" title="连接成功"></a>连接成功</h1><p>@param browserViewController 搜索控制器<br>在搜索控制器的连接完成的代理方法中隐藏搜索控制器<br>@param peerID<br>@param info<br>@return<br>连接上的设备ID 连接的信息<br>YES : 只发送连接上的用户</p>
+</li>
+<li><p>(BOOL)browserViewController:(MCBrowserViewController *)browserViewControlle</p>
+<pre><code>shouldPresentNearbyPeer:(MCPeerID *)peerID
+      withDiscoveryInfo:(nullable NSDictionary&lt;NSString *, NSString *&gt;
+</code></pre><p>{<br>  self.peerID = peerID;<br>  NSLog(@”info == %@<br>return YES; }<br>将图片发送给连接上的ID</p>
+</li>
+<li>(IBAction)sendImage { // 获取图片<br>peer = %@”,info, peerID);<br>UIImage <em>image = self.showImage.image;<br>// 将图片转换成NSData类型<br>NSData </em>data = UIImagePNGRepresentation(image);<br>发送数据<br>toPeers : 发给的设备ID的数组<br>withMode: 发送模式,是否是安全模式 */<br>  if (self.peerID != nil) {<pre><code>[self.mc_Session sendData:data toPeers:@[self.peerID] withMode:MCSess
+</code></pre>} }</li>
+</ul>
+<p>#接收数据</p>
+<p>实现MCSession的代理方法接受数据</p>
+<ul>
+<li>(void)session:(MCSession <em>)session didReceiveData:(NSData </em>)data fromPeer:(<br>{<br>  NSLog(@”%s %d”,<strong>func</strong>,<strong>LINE</strong>);<br>  NSLog(@”data = %@ , peer = %@”,data,peerID);<br>}</li>
+</ul>
+<p>#显示数据<br>在MCSeesion代理方法中设置获取过来的数据<br>   接收的数据</p>
+<ul>
+<li>(void)session:(MCSession <em>)session didReceiveData:(NSData </em>)data fromPeer:( {<br>//<br>NSLog(@”%s %d”,<strong>func</strong>,<strong>LINE</strong>);<br>NSLog(@”data = %@ , peer = %@”,data,peerID);<br>UIImage *image = [[UIImage alloc]initWithData:data];<br>if(image != nil){<br>// 设置数据 dispatch_async(dispatch_get_main_queue(), ^{<pre><code>self.showImage.image = image;
+</code></pre>  });<br>} }</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[蓝牙交互-CoreBlueTooth]]></title>
+      <url>http://lavender1026.github.io/2016/06/30/CoreBlueTooth/</url>
+      <content type="html"><![CDATA[<p>#CoreBlueTooth简介<br>可用于第三方蓝牙设备交互,设备必须支持蓝牙4.0 iPhone的设备必须是4S及以上<br>iPad设备必须是iPad mini及以上<br>iOS的系统必须是iOS 6及以上 蓝牙4.0以低功耗著称,所以一般被称为BLE(bluetooth low energy) 使用模拟器调试</p>
+<p>#应用场景<br>     运动手环<br>     智能家居<br>     拉卡拉蓝牙刷卡器</p>
+<p>#核心概念<br>CBCentralManager:中心设备(用来连接到外部设备的管家) CBPeripheralManager:外部设备(第三方的蓝牙4.0设备)<br><a id="more"></a></p>
+<p>#实际使用<br>  建立中心管家</p>
+<p>#1. 创建中心管家,并且设置代理<br>self.cmgr = [[CBCentralManager alloc]initWithDelegate:self queue:nil];<br>扫描外设(discover)</p>
+<p>#2. 在代理方法中扫描外部设备 /<em>*<br>scanForPeripheralsWithServices :如果传入指定的数组,那么就只会扫描数组中对应ID </em> 如果传入nil,那么就是扫描所有可以发现的设备<br> 扫描完外部设备就会通知CBCentralManager的代理</p>
+<ul>
+<li>(void)centralManagerDidUpdateState:(CBCentralManager *)central<br>{<br> if ([central state] == CBCentralManagerStatePoweredOn) {<pre><code>[self.cmgr scanForPeripheralsWithServices:nil options:nil];
+</code></pre>} }</li>
+</ul>
+<hr>
+<p>发现外部设备,每发现一个就会调用这个方法<br>所以可以使用一个数组来存储每次扫描完成的数组 </p>
+<ul>
+<li>(void)centralManager:(CBCentralManager *)central didDiscoverPeripheral:(CBP<br>{<br>// 有可能会导致重复添加扫描到的外设<br>// 所以需要先判断数组中是否包含这个外设 if(![self.peripherals containsObject:peripheral]){<pre><code>[self.peripherals addObject:peripheral];
+</code></pre>  }<br>}<br>连接外设</li>
+</ul>
+<ul>
+<li>模拟开始连接方法 */</li>
+</ul>
+<ul>
+<li>(void)start<br>{<br>#3. 连接外设<br>for (CBPeripheral *ppl in self.peripherals) { // 扫描外设的服务<br>// 这个操作应该交给外设的代理方法来做<br>// 设置代理<br>ppl.delegate = self;<br>[self.cmgr connectPeripheral:ppl options:nil];<br>} }<br>扫描外设中的服务和特征<br>#服务和特征的关系<br>每个蓝牙4.0的设备都是通过服务和特征来展示自己的,一个设备必然包含一个或 多个服务,每个服务下面又包含若干个特征。</li>
+</ul>
+<p>#连接外设成功调用</p>
+<ul>
+<li>(void)centralManager:(CBCentralManager *)central didConnectPeripheral:(CBPe<br>{<br>// 查找外设服务<br>  [peripheral discoverServices:nil];<br>}</li>
+</ul>
+<h1 id="发现服务就会调用代理方法"><a href="#发现服务就会调用代理方法" class="headerlink" title="发现服务就会调用代理方法 *"></a>发现服务就会调用代理方法 *</h1><p> @param peripheral 外设 */</p>
+<ul>
+<li>(void)peripheral:(CBPeripheral <em>)peripheral didDiscoverServices:(NSError </em>)<br>{<br>// 扫描到设备的所有服务<br>NSArray <em>services = peripheral.services; // 根据服务再次扫描每个服务对应的特征<br>for (CBService </em>ses in services) {<pre><code>[peripheral discoverCharacteristics:nil forService:ses];
+</code></pre>  }<br>}</li>
+</ul>
+<h1 id="发现服务对应的特征"><a href="#发现服务对应的特征" class="headerlink" title="发现服务对应的特征"></a>发现服务对应的特征</h1><ul>
+<li>(void)peripheral:(CBPeripheral <em>)peripheral didDiscoverCharacteristicsForSe<br>{<br>// 服务对应的特征<br>NSArray </em>ctcs = service.characteristics; // 遍历所有的特征<br>for (CBCharacteristic *character in ctcs) {<br>// 根据特征的唯一标示过滤<br>if ([character.UUID.UUIDString isEqualToString:@”XMG”]) {<br>NSLog(@”可以吃饭了”); }<br>} }<br>#断开连接</li>
+<li>(void)stop<br>与外设做数据交互<br>在指定的特征下做相应的操作<br>  Chapter-20(I)蓝牙交互CoreBlueTooth 151<br>r<br>e<br>r<br>MISSAJJ IOSDevelopment GitBook<br>{<br>// 断开所有连接上的外设<br>for (CBPeripheral *per in self.peripherals) {<pre><code>[self.cmgr cancelPeripheralConnection:per];
+</code></pre>  }<br>}</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[蓝牙初步分析]]></title>
+      <url>http://lavender1026.github.io/2016/06/29/%E8%93%9D%E7%89%99%E5%88%9D%E6%AD%A5%E5%88%86%E6%9E%90/</url>
+      <content type="html"><![CDATA[<p>#蓝牙分为GameKit(iOS7以后过期了) / Mutipeer Connectivity 和 CoreBluetooth三种框架</p>
+<p>#1.获取照片<br>// 1.判断相册是否可用<br>if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeSavedPhotosAlbum]) {<br>    NSLog(@”相册不可用”);<br>    return;<br>}<br>// 2.创建控制器<br>UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];<br>// 3.设置照片来源<br>imagePickerController.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;<br>// 4.设置代理<br>imagePickerController.delegate = self;<br>// 5.弹出控制器<br>[self presentViewController:imagePickerController animated:YES completion:nil];</p>
+<p>在代理方法imagePickerController: didFinishPickingMediaWithInfo:中可以获取到用户选择的照片<br>self.imageView.image = info[UIImagePickerControllerOriginalImage];<br><a id="more"></a></p>
+<p>#2.搜索设备–&gt;弹出蓝牙连接控制器<br>// 1.创建蓝牙连接控制器<br>GKPeerPickerController *peerPickerController = [[GKPeerPickerController alloc] init];</p>
+<p>// 2.设置代理<br>peerPickerController.delegate = self;<br>// 3.显示控制器<br>[peerPickerController show];</p>
+<p>#3.代理方法中连接设备，设置接收数据的句柄<br>/**</p>
+<ul>
+<li>当连接到设备时调用<br>*</li>
+<li>@param picker  控制器</li>
+<li>@param peerID  设备ID</li>
+<li>@param session 会话  用于接收和发送数据<br>*/<ul>
+<li>(void)peerPickerController:(GKPeerPickerController <em>)picker didConnectPeer:(NSString </em>)peerID toSession:(GKSession *)session<br>{<br>// 保存会话<br>self.session = session;<br>// 设置句柄<br>[session setDataReceiveHandler:session withContext:nil];<br>// 销毁控制器<br>[picker dismiss];<br>}</li>
+</ul>
+</li>
+</ul>
+<p>#4.在官方文档中获取接收到的数据<br>/**</p>
+<ul>
+<li>接收到数据时调用<br>*/<ul>
+<li>(void) receiveData:(NSData <em>)data fromPeer:(NSString </em>)peer inSession: (GKSession <em>)session context:(void </em>)context<br>{<br>UIImage *image = [UIImage imageWithData:data];<br>self.imageView.image = image;<br>}</li>
+</ul>
+</li>
+</ul>
+<p>#5.发送数据<br>NSData *data = UIImageJPEGRepresentation(self.imageView.image, 0.5);<br>[self.session sendDataToAllPeers:data withDataMode:GKSendDataReliable error:nil];</p>
+<p>==================================================================================</p>
+<p>CoreBluetooth</p>
+<p>CoreBluetooth中，蓝牙的最小单位是特征，以下代码说白了就是为了获取特定的特征<br>// 1.中央管理者 (queue设置为nil，默认就是主队列)<br>_centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil];<br>// 2.扫描周边设备  –&gt;发现设备 –&gt;连接设备<br>[self.centralManager scanForPeripheralsWithServices:nil options:nil];</p>
+<p>// 3.设置扫描服务<br>//扫描所有服务<br>[peripheral discoverServices:nil];</p>
+<p>// 4.在代理方法中获取扫描特征<br>/**</p>
+<ul>
+<li>当扫描到服务时调用<br>*/<ul>
+<li>(void)peripheral:(CBPeripheral <em>)peripheral didDiscoverServices:(NSError </em>)error<br>{<br>// 遍历所有服务<br>for (CBService *service in peripheral.services) {<br>  // 找到需要的服务<br>  if ([service.UUID.UUIDString isEqualToString:@”123”]) {<pre><code>// 4.扫描特征
+[peripheral discoverCharacteristics:nil forService:service];
+</code></pre>  }<br>}<br>}</li>
+</ul>
+</li>
+</ul>
+<p>// 5.在代理方法中获取特征，读取数据<br>/**</p>
+<ul>
+<li><p>当扫描到特征时调用<br>*/</p>
+<ul>
+<li><p>(void)peripheral:(CBPeripheral <em>)peripheral didDiscoverCharacteristicsForService:(CBService </em>)service error:(NSError <em>)error<br>{<br>// 遍历所有特征<br>for (CBCharacteristic </em>characteristic in service.characteristics) {<br>  //  找到需要的特征<br>  if ([characteristic.UUID.UUIDString isEqualToString:@”456”]) {</p>
+<pre><code>// 5.发送数据
+// 读取数据
+[peripheral readValueForCharacteristic:characteristic];
+
+// 写入数据
+[peripheral writeValue:[NSData data] forCharacteristic:characteristic type:CBCharacteristicWriteWithResponse];
+</code></pre><p>  }<br>}<br>}</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>#6.读取到的数据在相应代理方法中拿到<br>/**</p>
+<ul>
+<li>当有数据更新时调用<br>*/<ul>
+<li>(void)peripheral:(CBPeripheral <em>)peripheral didUpdateValueForCharacteristic:(CBCharacteristic </em>)characteristic error:(NSError <em>)error<br>{<br>NSData </em>data = characteristic.value;<br>}</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[收藏的博客]]></title>
       <url>http://lavender1026.github.io/2016/03/17/%E6%94%B6%E8%97%8F%E7%9A%84%E5%8D%9A%E5%AE%A2/</url>
       <content type="html"><![CDATA[<p>整理一下自己看过的精品博客以及网站，都是质量不错的博客</p>
@@ -36,6 +188,76 @@
 <li><a href="http://www.tanhao.me/" target="_blank" rel="external">谭灏的博客</a> | ：目前就职于腾讯mac管家部门，他是一名 OSX、iOS 程序员，他的博客中有许多mac，ios开发的文章，值得大家去品读</li>
 <li><a href="http://baiduhidevios.github.io/" target="_blank" rel="external">百度hiios团队周报</a></li>
 <li><a href="http://swiftcafe.io/" target="_blank" rel="external">swift cafe</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[RunLoop原理及核心机制]]></title>
+      <url>http://lavender1026.github.io/2016/02/25/RunLoop%E5%8E%9F%E7%90%86%E5%92%8C%E6%A0%B8%E5%BF%83%E6%9C%BA%E5%88%B6/</url>
+      <content type="html"><![CDATA[<p>#RunLoop的定义</p>
+<p>当有持续的异步任务需求时，我们需要创建一个独立的生命周期可控的线程。RunLoop就是控制线程生命周期并接收事件进行处理的机制。</p>
+<p>#RunLoop是iOS事件响应与任务处理最核心的机制，它贯穿iOS整个系统。</p>
+<p>Foundation: NSRunLoop<br>Core Foundation: CFRunLoop 核心部分，代码开源，C 语言编写，跨平台<br><a id="more"></a></p>
+<p>#1.目的</p>
+<p>通过RunLoop机制实现省电，流畅，响应速度快，用户体验好</p>
+<p>#2.理解</p>
+<p>进程相当于一家工厂，线程则是一个流水线，Run Loop属于流水线上的主管；<br>1&gt;当工厂接到商家的订单分配给这个流水线时，Run Loop就启动这个流水线，让流水线动起来，生产产品；<br>2&gt;当产品生产完毕时，Run Loop就会暂时停下流水线，节约资源。<br>RunLoop管理流水线，流水线才不会因为无所事事被工厂销毁；而不需要流水线时，就会辞退RunLoop这个主管，即退出线程，把所有资源释放。</p>
+<p>#RunLoop并不是iOS平台的专属概念，在任何平台的多线程编程中，为控制线程的生命周期，接收处理异步消息都需要类似RunLoop的循环机制实现，Android的Looper就是类似的机制。</p>
+<p>#3.特性</p>
+<p>1&gt; 主线程的RunLoop在应用启动的时候就会自动创建<br>2&gt; 其他线程则需要在该线程下自己启动<br>3&gt; 不能自己创建RunLoop<br>4&gt; RunLoop并不是线程安全的，所以需要避免在其他线程上调用当前线程的RunLoop<br>5&gt; RunLoop负责管理autoreleasepools<br>6&gt; RunLoop负责处理消息事件，即输入源事件和计时器事件</p>
+<p>#4.RunLoop机制</p>
+<p>主线程 (有 RunLoop 的线程) 几乎所有函数都从以下六个之一的函数调起:</p>
+<p>CFRUNLOOP_IS_CALLING_OUT_TO_AN_OBSERVER_CALLBACK_FUNCTION<br>CFRunloop is calling out to an abserver callback function<br>用于向外部报告 RunLoop 当前状态的更改，框架中很多机制都由 RunLoopObserver 触发，如 CAAnimation</p>
+<p>CFRUNLOOP_IS_CALLING_OUT_TO_A_BLOCK<br>CFRunloop is calling out to a block<br>消息通知、非延迟的perform、dispatch调用、block回调、KVO</p>
+<p>CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE<br>CFRunloop is servicing the main desipatch queue</p>
+<p>CFRUNLOOP_IS_CALLING_OUT_TO_A_TIMER_CALLBACK_FUNCTION<br>CFRunloop is calling out to a timer callback function<br>延迟的perform, 延迟dispatch调用</p>
+<p>CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION<br>CFRunloop is calling out to a source 0 perform function<br>处理App内部事件、App自己负责管理（触发），如UIEvent、CFSocket。普通函数调用，系统调用</p>
+<p>CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE1_PERFORM_FUNCTION<br>CFRunloop is calling out to a source 1 perform function<br>由RunLoop和内核管理，Mach port驱动，如CFMachPort、CFMessagePort</p>
+<p>#5.RunLoop 架构</p>
+<p>#RunLoop 原理和核心机制</p>
+<p>RunLoop主要有以下六种状态：</p>
+<p>kCFRunLoopEntry – 进入runloop循环<br>kCFRunLoopBeforeTimers – 处理定时调用前回调<br>kCFRunLoopBeforeSources – 处理input sources的事件<br>kCFRunLoopBeforeWaiting – runloop睡眠前调用<br>kCFRunLoopAfterWaiting – runloop唤醒后调用<br>kCFRunLoopExit – 退出runloop<br>RunLoop 运行时调用栈</p>
+<p>#主线程App运行时<br>RunLoop 原理和核心机制</p>
+<p>RunLoopObserver与Autorelease Pool的关系<br>UIKit 通过 RunLoopObserver 在 RunLoop 两次 Sleep 间对 Autorelease Pool 进行 Pop 和 Push 将这次 Loop 中产生的 Autorelease 对象释放。</p>
+<p>#RunLoop的挂起与唤醒</p>
+<p>指定用于唤醒的 mach_port 端口<br>调用 mach_msg 监听唤醒端口，被唤醒前系统内核将这个线程挂起，停留在mach_msg_trap状态。<br>由另一个线程向内核发送这个端口的msg后，trap状态被唤醒，RunLoop继续工作。<br>RunLoop支持的消息事件(Events)</p>
+<p>支持接收处理输入源（Input Source）事件，包括：<br>系统的Mach Port事件，是一种通讯事件<br>自定义输入事件<br>支持接受处理定时源（Timer）事件</p>
+<p>在启动RunLoop之前，必须添加监听的输入源事件或者定时源事件，否则调用[runloop run]会直接返回，而不会进入循环让线程长驻。</p>
+<p>如果没有添加任何输入源事件或Timer事件，线程会一直在无限循环空转中，会一直占用CPU时间片，没有实现资源的合理分配。<br>没有while循环且没有添加任何输入源或Timer的线程，线程会直接完成，被系统回收。</p>
+<p>//错误做法<br>NSRunLoop *runLoop = [NSRunLoop currentRunLoop];<br>while (!self.isCancelled &amp;&amp; !self.isFinished) {<br>    [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];<br>};</p>
+<p>//正确做法<br>NSRunLoop *runLoop = [NSRunLoop currentRunLoop];<br>[runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];<br>while (!self.isCancelled &amp;&amp; !self.isFinished) {<br>    @autoreleasepool {<br>        [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];<br>    }<br>}<br>Run Loop Modes</p>
+<p>#理解<br>Run Loop Mode就是流水线上支持生产的产品类型，流水线在一个时刻只能在一种模式下运行，生产某一类型的产品。消息事件就是订单。</p>
+<p>Cocoa定义了如下五种Mode</p>
+<p>Default：NSDefaultRunLoopMode，默认模式，在Run Loop没有指定Mode的时候，默认就跑在Default Mode下<br>Connection：NSConnectionRunLoopMode，用来监听处理网络请求NSConnection的事件<br>Modal：NSModalPanelRunLoopMode，OSX的Modal面板事件<br>Event tracking：UITrackingRunLoopMode，拖动事件<br>Common mode：NSRunLoopCommonModes，是一个模式集合，当绑定一个事件源到这个模式集合的时候就相当于绑定到了集合内的每一个模式</p>
+<p>RunLoop可以通过[acceptInputForMode:beforeDate:]和[runMode:beforeDate:]来指定在一段时间内的运行模式。如果不指定的话，RunLoop默认会运行在Default下（不断重复调用runMode:NSDefaultRunLoopMode beforDate:）</p>
+<p>#在主线程启动一个计时器,拖动UITableView或者UIScrollView，计时器不执行的原因和解决方案<br>在主线程启动一个计时器Timer，然后拖动UITableView或者UIScrollView，计时器不执行。这是因为，为了更好的用户体验，在主线程中Event tracking模式的优先级最高。在用户拖动控件时，主线程的Run Loop是运行在Event tracking Mode下，而创建的Timer是默认关联为Default Mode，因此系统不会立即执行Default Mode下接收的事件。解决方法：</p>
+<p>NSTimer * timer = [NSTimer scheduledTimerWithTimeInterval:1.0<br>                                                   target:self<br>                                                 selector:@selector(timerFireMethod:)<br>                                                 userInfo:nil<br>                                                  repeats:YES];</p>
+<p>[[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];<br>//或<br>[[NSRunLoop currentRunLoop] addTimer:timer forMode:UITrackingRunLoopMode];</p>
+<p>[timer fire];</p>
+<p>#Run Loop应用实践</p>
+<p>Run Loop主要有以下三个应用场景：</p>
+<p>#1.维护线程的生命周期，让线程不自动退出，isFinished为Yes时退出。<br>NSRunLoop <em>runLoop = [NSRunLoop currentRunLoop];<br>[runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];<br>while (!self.isCancelled &amp;&amp; !self.isFinished) {<br>    @autoreleasepool {<br>            [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:3]];<br>    }<br>}<br>创建常驻线程，执行一些会一直存在的任务。该线程的生命周期跟App相同<br>@autoreleasepool {<br>        NSRunLoop </em>runLoop = [NSRunLoop currentRunLoop];<br>        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];<br>        [runLoop run];<br>}</p>
+<p>#2.在一定时间内监听某种事件，或执行某种任务的线程<br>如下代码，在30分钟内，每隔30s执行onTimerFired:。这种场景一般会出现在，如我需要在应用启动之后，在一定时间内持续更新某项数据。<br>@autoreleasepool {<br>    NSRunLoop <em> runLoop = [NSRunLoop currentRunLoop];<br>    NSTimer </em> udpateTimer = [NSTimer timerWithTimeInterval:30<br>                                                    target:self<br>                                                  selector:@selector(onTimerFired:)<br>                                                  userInfo:nil<br>                                                   repeats:YES];<br>    [runLoop addTimer:udpateTimer forMode:NSRunLoopCommonModes];<br>    [runLoop runUntilDate:[NSDate dateWithTimeIntervalSinceNow:60*30]];<br>}</p>
+<p>#3.AFNetworking中RunLoop的创建</p>
+<ul>
+<li><p>(void)networkRequestThreadEntryPoint:(id)__unused object {<br>  @autoreleasepool {</p>
+<pre><code>[[NSThread currentThread] setName:@&quot;AFNetworking&quot;];
+
+NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+ // 这里主要是监听某个 port，目的是让这个 Thread 不会回收
+[runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode]; 
+[runLoop run];
+</code></pre><p>  }<br>}</p>
+</li>
+<li><p>(NSThread <em>)networkRequestThread {<br>  static NSThread </em>_networkRequestThread = nil;<br>  static dispatch_once_t oncePredicate;<br>  dispatch_once(&amp;oncePredicate, ^{</p>
+<pre><code>_networkRequestThread =
+[[NSThread alloc] initWithTarget:self
+                        selector:@selector(networkRequestThreadEntryPoint:)
+                          object:nil];
+[_networkRequestThread start];
+</code></pre><p>  });<br>  return _networkRequestThread;<br>}</p>
+</li>
 </ul>
 ]]></content>
     </entry>
@@ -439,6 +661,310 @@ UIWindow *window = app.window;
       <content type="html"><![CDATA[<p>category &amp; extension</p>
 <p>苹果推荐分类的使用<br>    •    1.给已经存在的类添加方法<br>    •    2.把类的实现分开在几个不同文件中<br>    ◦    减少单个文件的体积<br>    ◦    把不同功能组织到不同的category里<br>    ◦    多个开发者共同完成一个类<br>    ◦    按照需求加载想要的category<br>    •    3.声明私有方法<br>除此之外，我们还可以转换思想，将category使用到如下地方：<br>    •    4.模仿多继承<br>    •    5.把framework的私有方法分开<br>    <a id="more"></a></p>
 <p>category和extension区别1<br>    •    category: 类别，分类<br>    ◦    专门用来给类添加新的方法<br>    ◦    不能给类添加成员属性，添加了成员变量，也无法取到<br>    ▪    注意：其实可以通过runtime给分类添加属性<br>    ◦    分类中用@property定义变量，只会生成变量的getter，setter方法的声明，不能生成方法实现和带下划线的成员变量。<br>    •    extension：类扩展<br>    ◦    可以说成是特殊的分类，也称作匿名分类<br>    ◦    可以给类添加成员属性，但是是私有变量<br>    ◦    可以给类添加方法，也是私有方法<br>category和extension区别2<br>虽然有人说extension是一个特殊的category，也有人将extension叫做匿名分类，但是其实两者差别很大。<br>    •    extension<br>    ◦    在编译器决议，是类的一部分，在编译器和头文件的@interface和实现文件里的@implement一起形成了一个完整的类。<br>    ◦    伴随着类的产生而产生，也随着类的消失而消失。<br>    ◦    extension一般用来隐藏类的私有消息，你必须有一个类的源码才能添加一个类的extension，所以对于系统一些类，如nsstring，就无法添加类扩展<br>    •    category<br>    ◦    是运行期决议的<br>    ◦    类扩展可以添加实例变量，分类不能添加实例变量<br>    ◦    原因：因为在运行期，对象的内存布局已经确定，如果添加实例变量会破坏类的内部布局，这对编译性语言是灾难性的。<br>category底层结构<br>我们知道，所有OC类和对象，在runtime层都是用struct表示的，category在runtime层使用结构体category_t定义的，包含了如下：<br>    •    name 类名<br>    •    cls 类<br>    •    instanceMethods 对象方法<br>    •    classMethods 类方法<br>    •    protocols 协议列表<br>    •    instanceProperties 添加的所有属性<br>category加载<br>在runtime，系统会将包含的内容添加如下：<br>    •    把category的实力方法，协议，已经属性添加到类上<br>    •    把类方法和协议添加到metaclass<br>分类加载和方法调用顺序<br>    •    加载：先加载原类的+load方法，再加载分类的+load方法，若多个分类，则根据编译顺序加载<br>    •    调用：先调用分类的方法，再调用原类的方法，分类方法会覆盖原类的方法<br>分类覆盖类的方法<br>如果分类中的方法与类的方法同名，则将会覆盖类的方法，实现原理：分类的对象方法会添加到类的方法列表中，分类的方法会添加到类的相应方法列表中（对象方法添加到类的方法列表，类方法会添加到metaclass列表），而且排列顺序会与原类的同名方法排在一起，且在原类的同名方法的前面。方法调用时会根据顺序先找到第一同名方法就调用，因此会覆盖原类的同名方法。<br>分类中添加成员属性<br>在runtime层面可以通过关联对象为分类添加成员属性</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[地图定位CoreLocation框架的使用(2)]]></title>
+      <url>http://lavender1026.github.io/2015/07/12/%E5%9C%B0%E5%9B%BE%E5%AE%9A%E4%BD%8DCoreLocation%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8(2)/</url>
+      <content type="html"><![CDATA[<h1 id="CoreLocation框架"><a href="#CoreLocation框架" class="headerlink" title="CoreLocation框架"></a>CoreLocation框架</h1><p>#四. CLLocation对象详解 </p>
+<p>#1. 属性解释</p>
+<pre><code>    &gt; coordinate
+&gt; altitude
+&gt; speed
+&gt; course
+</code></pre><p>#2. 重要方法<br>: 当前位置所在的经纬度数据<br>: 海拔<br>: 当前速度<br>: 航向(设备移动的方向, 值域范围:0.0 ~ 259.9, 正北方向为0.0)<br>代码: - (CLLocationDistance)distanceFromLocation:(CLLocation *)location 作用: 计算两个位置对象之间的物理距离, 单位是(米)<br><a id="more"></a></p>
+<p>#3. 场景演练</p>
+<ol>
+<li>场景演示:打印当前用户的行走方向,偏离角度以及对应的行走距离, 例如:”北偏东30度方向,移动了8米”</li>
+<li>实现步骤:<br>1&gt; 获取对应的方向偏向(例如”正东”,”东偏南”) 2&gt; 获取对应的偏离角度(并判断是否是正方向) 3&gt; 计算行走距离<br>4&gt; 打印信息<br>#4. 注意事项<br>使用位置前, 务必判断当前获取的位置是否有效<br>代码: if (location.horizontalAccuracy &lt; 0) return;<br>功能: 如果水平精确度小于零, 代表虽然可以获取位置对象, 但是数据错误, 不可用<br>#五、经验小结<br>#一. 定位的应用场景<br>1) 导航<br>2) 电商APP,获取用户所在城市(需要与(反)地理编码联合使用) 3) 数据采集用户信息(例如,统计app使用分布)<br>4) 查找周边(周边好友, 周边商家等等)<br>Chapter-19(II)地图定位CoreLocation框架 142<br>MISSAJJ IOSDevelopment GitBook<h1 id="二-开发经验"><a href="#二-开发经验" class="headerlink" title="二. 开发经验"></a>二. 开发经验</h1>#1. 由于定位非常耗电; 所以为了给用户省电, 你可以遵守以下小经验<br>1)不需要获取用户位置时,一定要关闭定位服务: 2)如果能满足项目需求,尽可能的使用”监听显著位置变化”的定位服务(打车app) 3)如果可以,尽可能使用低精度的desiredAccuracy 4)如果是数据采集,(一般都是周期性的去轮询用户位置),在轮询期间一定要关闭定位<br>五. 指南针效果实现 1. 实现思路<br>利用”磁力计”传感器,获取设备朝向 根据设备朝向反向旋转”指南针”图片<br>#2. 代码实现<br>获取设备朝向<br>1) 导入CoreLocation框架以及对应的主头文件 #import <corelocation corelocation.h=""><br>2) 创建CLLocationManager对象并设置代理<br>self.locationM = [[CLLocationManager alloc] init]; self.locationM.delegate = self;<br>3) 调用方法, 开始获取设备朝向<br>[self.locationM startUpdatingHeading];<br>4) 在对应的代理方法中获取设备朝向信息 -(void)locationManager:(CLLocationManager <em>)manager didUpdateHeadi<br>{<br>// 旋转图片代码<br>} 旋转图片<br>// 1.判断当前的角度是否有效(如果此值小于0,代表角度无效) if(newHeading.headingAccuracy &lt; 0)<br>return;<br>// 2.获取当前设备朝向(磁北方向)<br>CGFloat angle = newHeading.magneticHeading;<br>// 3.转换成为弧度<br>CGFloat radian = angle / 180.0 </em> M_PI;<br>// 4.带动画反向旋转指南针<br>[UIView animateWithDuration:0.5 animations:^{<pre><code>    self.compassView.transform = CGAffineTransformMakeRotation(-radian
+}];
+</code></pre>)</corelocation></li>
+<li>概念补充<br>磁北角度: newHeading.magneticHeading 真北角度: newHeading.trueHeading</li>
+<li>注意事项<br>——- 相对于”磁北方向”产生的角度 ——- 相对于”真北方向”产生的角度</li>
+<li>获取设备朝向前, 先判断”磁力计”是否可用 [CLLocationManager headingAvailable];</li>
+<li>获取朝向前, 判断当前朝向信息是否有效 if(newHeading.headingAccuracy &lt; 0) return;</li>
+<li>注意与”航向”的区别<br>设备朝向是指手机的朝向; “航向”可以理解为设备的移动方向</li>
+<li>使用”磁力计”传感器获取设备朝向, 不需要请求用户授权 因为设备朝向不涉及用户隐私<br>5.测试环境</li>
+<li>XCode版本无要求(建议:XCode7.0不需要开发者账号也可以进行真机调试) 2. 必须要求真机设备(只有真机设备才有”磁力计”传感器)<br>六. 区域监听 1.概念解释<br>区 域 : 就是指划定的一块地域范围(比如圆形区域, 则由区域中心, 和半径组成)<br>区域监听 : 是指,我们通过代码指定一个区域, 然后当用户持握设备进入或者离开指定区域, 我们<br>#2. 监听指定区域<br>导入CoreLocation框架以及对应的主头文件 <corelocation corelocation.h=""><br>创建CLLocationManager对象并设置代理<pre><code>self.locationM = [[CLLocationManager alloc] init];
+self.locationM.delegate = self;
+</code></pre>请求前后台定位, 或前台定位授权, 并在Info.Plist文件中配置相应的Key<pre><code>[self.locationM requestAlwaysAuthorization];
+// [self.locationM requestWhenInUseAuthorization];
+</code></pre>创建一个区域, 并开始监听<br>// 1. 判断区域监听服务是否可用(定位服务是否关闭, 定位是否授权, 是否开启飞行模式) if ([CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion {<br>// 创建区域中心<br>CLLocationCoordinate2D center = CLLocationCoordinate2DMake(29.1234<br>// 创建区域(指定区域中心,和区域半径) CLLocationDistance radius = 1000;<br>// 判断区域半径是否大于最大监听区域半径,如果大于, 就没法监听<br>if (radius &gt; self.locationM.maximumRegionMonitoringDistance) {<pre><code>    radius = self.locationM.maximumRegionMonitoringDistance;
+}
+CLCircularRegion *region = [[CLCircularRegion alloc] initWithCente
+</code></pre>// 开始监听指定区域<pre><code>    [self.locationM startMonitoringForRegion:region];
+}
+</code></pre>else<br>{<br>NSLog(@”区域监听不可用”);<br>}<br>在对应的代理方法中监听区域状态<br>// 进去监听区域后调用(调用一次)<br>-(void)locationManager:(nonnull CLLocationManager <em>)manager didEnterRe<br>{<br>NSLog(@”进入区域—%@”, region.identifier); [manager stopMonitoringForRegion:region];<br>}<br>// 离开监听区域后调用(调用一次)<br>-(void)locationManager:(nonnull CLLocationManager </em>)manager didExitReg<br>{<br>NSLog(@”离开区域—%@”, region.identifier);<br>}<br>#3. 获取某个区域的当前状态<br>监听某个区域时, 只有进入或者离开这个区域时, 才能回调对应的方法, 是一个进入或者离开的 动作 如果想知道某一个区域的当前状态(识别用户是在区域内部, 还是区域外部), 则需要使用以 下方法<br>代 码:<br>[self.locationM requestStateForRegion:region];<br>回调代理:<br>// 请求某个区域状态时, 回调的代理方法 -(void)locationManager:(CLLocationManager *)manager didDetermineState:(CL<br>{<br> switch (state) {<br>case CLRegionStateUnknown: NSLog(@”未知状态”); break;<br>case CLRegionStateInside: NSLog(@”在区域内部”);<br>Chapter-19(II)地图定位CoreLocation框架 145<br>5<br>r<br>g<br>i<br>R<br>MISSAJJ IOSDevelopment GitBook<pre><code>     break;
+case CLRegionStateOutside:
+</code></pre>NSLog(@”在区域外部”);<pre><code>    break;
+default:
+</code></pre>break; }<br>}<br>#4. 测试环境<br>XCode版本无要求 iOS模拟器版本无要求 5. 注意事项</corelocation></li>
+<li>想要做区域监听, 在iOS8.0之后, 必须请求位置授权<br>代码: [self.locationM requestAlwaysAuthorization];<br>原因: 区域监听的原理就是获取用户的位置, 然后在判断该位置是否在制定区域内, 所以会涉及到用</li>
+<li>使用前, 先判断区域监听是否可用<br>代码: [CLLocationManager isMonitoringAvailableForClass:[CLCircularRegion c</li>
+<li>注意区域半径是否大于最大区域监听半径(如果大于, 则无法监听成功)<br>代码: radius &gt; self.locationM.maximumRegionMonitoringDistance<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1></li>
+<li>区域监听, 测试没有效果?<br>首先, 确定代码没有问题, 是否有请求授权;<br>其次, 尝试修改模拟器位置信息, 触发进入区域或离开区域的动作<br>第三, 如果模拟器出现BUG, 定位不到, 也会无法判定当前区域状态; 所以, 最后可以尝试重置模<br>#地理编码<br>#1. 概念解释<br>地理编码: 是指根据地址关键字, 将其转换成为对应的经纬度等信息; 发地理编码: 是指根据经纬度信息, 将其转换成为对应的省市区街道等信息;<br>#2. 地理编码<br>导入CoreLocation框架以及对应的主头文件 #import <corelocation corelocation.h=""><br>创建CLGeocoder对象<br>self.geoC = [[CLGeocoder alloc] init];<br>根据地址关键字, 进行地理编码<br>// 直接根据地址进行地理编码(返回结果可能有多个,因为一个地点有重名)<br> Chapter-19(II)地图定位CoreLocation框架 146<br>拟<br>MISSAJJ IOSDevelopment GitBook<br>[self.geoC geocodeAddressString:@”广州” completionHandler:^(NSArray&lt;CL<br>{<br>// 包含区,街道等信息的地标对象<br>CLPlacemark <em>placemark = [placemarks firstObject]; // 城市名称<br>NSString </em>city = placemark.locality;<br>// 街道名称<br>NSString <em>street = placemark.thoroughfare;<br>// 全称<br>NSString </em>name = placemark.name;<br>}]; </corelocation></li>
+<li>反地理编码<br>导入CoreLocation框架以及对应的主头文件<corelocation corelocation.h=""><br>创建CLGeocoder对象<br>self.geoC = [[CLGeocoder alloc] init];<br>根据经纬度信息, 进行反地理编码<br>// 根据经纬度信息进行反地理编码<br>[self.geoC reverseGeocodeLocation:[[CLLocation alloc] initWithLatitude<br>{<br>// 包含区,街道等信息的地标对象<br>CLPlacemark <em>placemark = [placemarks firstObject]; // 城市名称<br>NSString </em>city = placemark.locality;<br>// 街道名称<br>NSString <em>street = placemark.thoroughfare;<br>// 全称<br>NSString </em>name = placemark.name;<br>}];</corelocation></li>
+<li>CLPlacemark 地标对象详解<br>location : CLLocation 类型, 位置对象信息, 里面包含经纬度, 海拔等等 region : CLRegion 类型, 地标对象对应的区域<br>addressDictionary : NSDictionary 类型, 存放街道,省市等信息<br>: NSString 类型, 地址全称 : NSString 类型, 街道名称 : NSString 类型, 城市名称<br>name<br>thoroughfare<br>locality<br>administrativeArea : NSString 类型, 省名称 country : NSString 类型, 国家名称<h1 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境```"></a>测试环境```</h1>必须联网 XCode版本不限 iOS模拟器系统版本不限 ```<h1 id="常见问题-1"><a href="#常见问题-1" class="headerlink" title="常见问题"></a>常见问题</h1>测试无数据?<br>首先, 检查是否有联网;<br>其次, 如果是反地理编码,可尝试更换经纬度再次尝试, 有的经纬度没有对应信息<br>#1. 应用场景<br>一般与定位结合使用, 确定当前位置的具体地理信息<br>八. 使用第三方框架进行定位<br>#1. 主要原因<br>因为使用CoreLocation框架进行获取用户位置信息, 是通过代理进行回调; 而第三方框架<br>#2. 框架信息<br>名称: locationManager<br>地址: <a href="https://github.com/intuit/LocationManager" target="_blank" rel="external">link</a><br>#3. 使用方法 参照该框架对应的 readME<br>#4. 注意事项<br>一般集成第三方框架到项目中, 请先确保该框架没有问题, 然后再向项目中集成</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[地图定位CoreLocation框架的使用(1)]]></title>
+      <url>http://lavender1026.github.io/2015/07/11/%E5%9C%B0%E5%9B%BE%E5%AE%9A%E4%BD%8DCoreLocation%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8(1)/</url>
+      <content type="html"><![CDATA[<h1 id="CoreLocation框架"><a href="#CoreLocation框架" class="headerlink" title="CoreLocation框架"></a>CoreLocation框架</h1><h1 id="一-IOS8-0之前的定位"><a href="#一-IOS8-0之前的定位" class="headerlink" title="一:IOS8.0之前的定位"></a>一:IOS8.0之前的定位</h1><p>#1. 前台定位<br>导入CoreLocation框架以及对应的主头文件 <corelocation corelocation.h=""><br>创建CLLocationManager对象并设置代理<br>       self.locationM = [[CLLocationManager alloc] init];<br>       self.locationM.delegate = self;<br>调用方法,开始更新用户位置信息<br>[self.locationM startUpdatingLocation];<br>  在对应的代理方法中获取位置信息<br>       -(void)locationManager:(nonnull CLLocationManager *)manager didUpdateL<br>{<br>NSLog(@”每当请求到位置信息时, 都会调用此方法”);<br>}<br><a id="more"></a></corelocation></p>
+<p>#2. 后台定位<br>在前台定位基础上, 勾选后台模式Location updates image</p>
+<p>#3. 额外设置</p>
+<p>每隔多少米定位一次<br>代码: self.locationM.distanceFilter = 100;<br>功能: 只有当最新的位置与上一次获取的位置之间的距离, 大于这个值时, 才会通过代理告诉外界<br>设置定位精确度<br>代 码: self.locationM.desiredAccuracy = kCLLocationAccuracyBest; 功 能: 通过设置此属性, 获取不同精确度的位置信息<br>注意事项: 精确度越高,越耗电,定位所需时间越长<br>枚举注解:<br>  枚举值 kCLLocationAccuracyBestForNavigation<br>kCLLocationAccuracyBest kCLLocationAccuracyNearestTenMeters kCLLocationAccuracyHundredMeters kCLLocationAccuracyKilometer kCLLocationAccuracyThreeKilometers</p>
+<ol>
+<li>知识补充<br>含义<br>最适合导航<br>精度最好的<br>附近10米 附近100米 附近1000米 附近3000米</li>
+<li>定位常识<br>1) 标准定位服务(基于gps/基站/wifi定位, 具体使用哪种,苹果有自己规则)<blockquote>
+<p>程序关闭,就没法获取位置<br>2) 显著的位置变化定位服务(使用基站进行定位,所以必须要求设备有电话模块)<br>当app被完全关闭时,也可以接收到位置通知,并让app进入到后台处理<br>定位精度相比于上面,精度不大,所以耗电小,而且定位更新频率依据基站密度而定</p>
+</blockquote>
+</li>
+<li>应用场景<br>1) 如果要求定位及时,精度较高,并且运行时间较短,可使用标准定位;<br>2) 如果长时间监控用户位置,用户移动速度比较快(例如打车软件),可使用后者<br>#4. 测试环境:</li>
+<li>XCode7.0之前版本,例如XCode6.4版本 2. 模拟器选择iOS8.0之前的版本</li>
+</ol>
+<ul>
+<li>原因 : XCode7.0(包含7.0)之后不支持iOS8.0之前的模拟器<br>#5.常见问题总结<br>定位不到, 对应的代理方法不执行:<br>首先,检查运行的模拟器是否是iOS8.0之前的系统版本<br>其次,检查模拟器是否设置位置数据 第三,确保代码无问题(一般都是代理没有设置,或者位置管理器对象是局部变量,亦或是位置管理器 第四,绝逼是模拟器BUG, 请重置模拟器(是重置,不是重启)<br>#二. iOS8.0之后定位<br>#1. 前台定位<br>导入CoreLocation框架以及对应的主头文件 <corelocation corelocation.h=""><br>创建CLLocationManager对象并设置代理<pre><code>self.locationM = [[CLLocationManager alloc] init];
+self.locationM.delegate = self;
+</code></pre>请求前台定位授权, 并在Info.Plist文件中配置Key ( Nslocationwheninuseusagedescription ) [self.locationM requestWhenInUseAuthorization];<br>调用方法,开始更新用户位置信息<br>[self.locationM startUpdatingLocation];<br>在对应的代理方法中获取位置信息<pre><code>-(void)locationManager:(nonnull CLLocationManager *)manager didUpdateL
+</code></pre>{<br>NSLog(@”每当请求到位置信息时, 都会调用此方法”);<br>}<br>#2. 后台定位<br>方案一:<br>在前台定位基础上, 勾选后台模式Location updates</corelocation></li>
+</ul>
+<p>方案二:<br>请求前后台定位授权,并在info.plist文件中配置KEY ( NSLocationAlwaysUsageDescription ) [self.locationM requestAlwaysAuthorization];<br>注意:不需要勾选后台模式, 也可以进行后台定位<br>注意:此时授权状态如果是前后台定位, 那么即使APP退到后台时, 屏幕顶部会也不会出现 蓝条</p>
+<p>#3. 监听用户授权状态<br>实现以下代理方法即可<br>// 当用户授权状态发生变化时调用<br>-(void)locationManager:(nonnull CLLocationManager <em>)manager didChangeA {<br>switch (status) {<br>// 用户还未决定<br>case kCLAuthorizationStatusNotDetermined:<br>{<br>NSLog(@”用户还未决定”);<br>break; }<br>// 访问受限(苹果预留选项,暂时没用)<br>case kCLAuthorizationStatusRestricted:<br>{<br>NSLog(@”访问受限”); break;<br>}<br>// 定位关闭时和对此APP授权为never时调用<br> case kCLAuthorizationStatusDenied: {<br>// 定位是否可用(是否支持定位或者定位是否开启) if([CLLocationManager locationServicesEnabled])<br>{<br>NSLog(@”定位开启,但被拒”);<br>// 在此处, 应该提醒用户给此应用授权, 并跳转到”设置”界面让用户进行授权<br>// 在iOS8.0之后跳转到”设置”界面代码<br>NSURL </em>settingURL = [NSURL URLWithString:UIApplicationOpenSett if([[UIApplication sharedApplication] canOpenURL:settingURL]) {<br>                   [[UIApplication sharedApplication] openURL:settingURL];<br>      }<br>}else<br>{<br>NSLog(@”定位关闭,不可用”);<br>}<br>break; }<br>// 获取前后台定位授权<br>case kCLAuthorizationStatusAuthorizedAlways:<br>// case kCLAuthorizationStatusAuthorized: // 失效,不建议使用 {<br>NSLog(@”获取前后台定位授权”); break;<br>}<br>// 获得前台定位授权<br>       case kCLAuthorizationStatusAuthorizedWhenInUse:<br>{<br>NSLog(@”获得前台定位授权”); break;<br>} default:<br>break; }<br>}</p>
+<p>#5. 常见问题总结<br>定位不到, 对应的代理方法不执行:<br>首先,检查是否请求授权, 并设置了对应的KEY<br>其次,检查模拟器是否设置位置数据 第三,确保代码无问题(一般都是代理没有设置,或者位置管理器对象是局部变量,亦或是位置管理器 第四,前面都不对那就是模拟器BUG, 请重置模拟器(是重置,不是重启)</p>
+<p>#三. iOS9.0 定位补充 </p>
+<p>#1. 定位变化<br>前台定位<br>(同iOS8.0之后一致, 无任何变化, 都需要主动请求授权)<br>后台定位 方案一:<br>在前台定位基础上, 勾选后台模式Location updates, 并且设置以下属性为YES<br>     if ([[UIDevice currentDevice].systemVersion floatValue] &gt;= 9.0)<br>      {<br>          self.locationM.allowsBackgroundLocationUpdates = YES;<br>      }<br>方案二:<br>请求前后台定位授权,并在info.plist文件中配置KEY ( NSLocationAlwaysUsageDescription<br>[self.locationM requestAlwaysAuthorization]; </p>
+<p>#2. 新的API<br>单次定位请求;<br>代 码: [self.locationM requestAlwaysAuthorization]; 功 能: 获取一次位置信息<br>实现逻辑:<br>(1) 按照定位精确度从低到高进行排序,逐个进行定位.如果在有效时间内, 定位到了精<br>(2) 如果获取到的位置不是精确度最高的那个,也会在定位超时后,通过代理告诉外界. 注意事项:<br>(1) 必须实现代理的-locationManager:didFailWithError:方法 (2) 不能与startUpdatingLocation方法同时使用</p>
+<p>#3. 测试环境:</p>
+<ol>
+<li>XCode版本要求7.0版本以上 2. 模拟器选择iOS9.0之后的版本<br>#4. 常见问题总结<br>单次定位在模拟器上测试不出效果?<br>答: 因为模拟器的位置是固定的, 所以无法测试出效果, 请使用真机进行测试.</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[项目管理Git常用命令]]></title>
+      <url>http://lavender1026.github.io/2015/06/20/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86Git%E7%9A%84%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<h1 id="项目管理Git常用命令"><a href="#项目管理Git常用命令" class="headerlink" title="项目管理Git常用命令"></a>项目管理Git常用命令</h1><h3 id="Git是一个很强大的分布式版本控制系统-它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"><a href="#Git是一个很强大的分布式版本控制系统-它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。" class="headerlink" title="Git是一个很强大的分布式版本控制系统,它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。"></a>Git是一个很强大的分布式版本控制系统,它不但适用于管理大型开源软件的源代码，管理私人的文档和源代码也有很多优势。</h3><p>Git常用操作命令：<br><a id="more"></a></p>
+<p>1) 远程仓库相关命令<br>检出仓库：$ git clone git://github.com/jQuery/jquery.git</p>
+<p>查看远程仓库：$ git remote -v</p>
+<p>添加远程仓库：$ git remote add [name] [url]</p>
+<p>删除远程仓库：$ git remote rm [name]</p>
+<p>修改远程仓库：$ git remote set-url –push [name] [newUrl]</p>
+<p>拉取远程仓库：$ git pull [remoteName] [localBranchName]</p>
+<p>推送远程仓库：$ git push [remoteName] [localBranchName]</p>
+<p>如果想把本地的某个分支test提交到远程仓库，并作为远程仓库的master分支，或者作为另外一个名叫test的分支，如下：<br>$git push origin test:master // 提交本地test分支作为远程的master分支<br>$git push origin test:test // 提交本地test分支作为远程的test分支<br>2）分支(branch)操作相关命令<br>查看本地分支：$ git branch</p>
+<p>查看远程分支：$ git branch -r</p>
+<p>创建本地分支：$ git branch [name] —-注意新分支创建后不会自动切换为当前分支</p>
+<p>切换分支：$ git checkout [name]</p>
+<p>创建新分支并立即切换到新分支：$ git checkout -b [name]</p>
+<p>删除分支：$ git branch -d [name] —- -d选项只能删除已经参与了合并的分支，对于未有合并的分支是无法删除的。如果想强制删除一个分支，可以使用-D选项</p>
+<p>合并分支：$ git merge [name] —-将名称为[name]的分支与当前分支合并</p>
+<p>创建远程分支(本地分支push到远程)：$ git push origin [name]</p>
+<p>删除远程分支：$ git push origin :heads/[name] 或 $ gitpush origin :[name]</p>
+<p>*创建空的分支：(执行命令之前记得先提交你当前分支的修改，否则会被强制删干净没得后悔)</p>
+<p>$git symbolic-ref HEAD refs/heads/[name]</p>
+<p>$rm .git/index</p>
+<p>$git clean -fdx<br>3）版本(tag)操作相关命令<br>查看版本：$ git tag</p>
+<p>创建版本：$ git tag [name]</p>
+<p>删除版本：$ git tag -d [name]</p>
+<p>查看远程版本：$ git tag -r</p>
+<p>创建远程版本(本地版本push到远程)：$ git push origin [name]</p>
+<p>删除远程版本：$ git push origin :refs/tags/[name]</p>
+<p>合并远程仓库的tag到本地：$ git pull origin –tags</p>
+<p>上传本地tag到远程仓库：$ git push origin –tags</p>
+<p>创建带注释的tag：$ git tag -a [name] -m ‘yourMessage’<br>4) 子模块(submodule)相关操作命令</p>
+<p>添加子模块：$ git submodule add [url] [path]<br>如：$git submodule add git://github.com/soberh/ui-libs.git src/main/webapp/ui-libs</p>
+<p>初始化子模块：$ git submodule init —-只在首次检出仓库时运行一次就行</p>
+<p>更新子模块：$ git submodule update —-每次更新或切换分支后都需要运行一下</p>
+<p>删除子模块：（分4步走哦）</p>
+<p>1) $ git rm –cached [path]</p>
+<p>2) 编辑“.gitmodules”文件，将子模块的相关配置节点删除掉</p>
+<p>3) 编辑“ .git/config”文件，将子模块的相关配置节点删除掉</p>
+<p>4) 手动删除子模块残留的目录</p>
+<p>5）忽略一些文件、文件夹不提交<br>在仓库根目录下创建名称为“.gitignore”的文件，写入不需要的文件夹名或文件，每个元素占一行即可，如<br>target<br>bin<br>*.db<br>Git 常用命令</p>
+<p>git branch 查看本地所有分支</p>
+<p>git status 查看当前状态</p>
+<p>git commit 提交</p>
+<p>git branch -a 查看所有的分支</p>
+<p>git branch -r 查看本地所有分支</p>
+<p>git commit -am “init” 提交并且加注释</p>
+<p>git remote add origin git@192.168.1.119:ndshow</p>
+<p>git push origin master 将文件给推到服务器上</p>
+<p>git remote show origin 显示远程库origin里的资源</p>
+<p>git push origin master:develop</p>
+<p>git push origin master:hb-dev 将本地库与服务器上的库进行关联</p>
+<p>git checkout –track origin/dev 切换到远程dev分支</p>
+<p>git branch -D master develop 删除本地库develop</p>
+<p>git checkout -b dev 建立一个新的本地分支dev</p>
+<p>git merge origin/dev 将分支dev与当前分支进行合并</p>
+<p>git checkout dev 切换到本地dev分支</p>
+<p>git remote show 查看远程库</p>
+<p>git add .</p>
+<p>git rm 文件名(包括路径) 从git中删除指定文件</p>
+<p>git clone git://github.com/schacon/grit.git 从服务器上将代码给拉下来</p>
+<p>git config –list 看所有用户</p>
+<p>git ls-files 看已经被提交的</p>
+<p>git rm [file name] 删除一个文件</p>
+<p>git commit -a 提交当前repos的所有的改变</p>
+<p>git add [file name] 添加一个文件到git index</p>
+<p>git commit -v 当你用－v参数的时候可以看commit的差异</p>
+<p>git commit -m “This is the message describing the<br>commit” 添加commit信息</p>
+<p>git commit -a -a是代表add，把所有的change加到git index里然后再commit</p>
+<p>git commit -a -v 一般提交命令</p>
+<p>git log 看你commit的日志</p>
+<p>git diff 查看尚未暂存的更新</p>
+<p>git rm a.a 移除文件(从暂存区和工作区中删除)</p>
+<p>git rm –cached a.a 移除文件(只从暂存区中删除)</p>
+<p>git commit -m “remove” 移除文件(从Git中删除)</p>
+<p>git rm -f a.a 强行移除修改后文件(从暂存区和工作区中删除)</p>
+<p>git diff –cached 或 $ git diff –staged 查看尚未提交的更新</p>
+<p>git stash push 将文件给push到一个临时空间中</p>
+<p>git stash pop 将文件从临时空间pop下来</p>
+<p>git remote add origin git@github.com:username/Hello-World.git</p>
+<p>git push origin master 将本地项目给提交到服务器中</p>
+<p>git pull 本地与服务器端同步<br>git push (远程仓库名) (分支名) 将本地分支推送到服务器上去。<br>git push origin serverfix:awesomebranch</p>
+<p>git fetch 相当于是从远程获取最新版本到本地，不会自动merge</p>
+<p>git commit -a -m “log_message” (-a是提交所有改动，-m是加入log信息) 本地修改同步至服务器端 ：</p>
+<p>git branch branch_0.1 master 从主分支master创建branch_0.1分支</p>
+<p>git branch -m branch_0.1 branch_1.0 将branch_0.1重命名为branch_1.0</p>
+<p>git checkout branch_1.0/master 切换到branch_1.0/master分支<br>du -hs</p>
+<p>mkdir WebApp</p>
+<p>cd WebApp</p>
+<p>git init</p>
+<p>touch README</p>
+<p>git add README</p>
+<p>git commit -m ‘first commit’</p>
+<p>git remote add origin git@github.com:daixu/WebApp.git</p>
+<p>git push -u origin master</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[CocoaPods的使用]]></title>
+      <url>http://lavender1026.github.io/2015/06/11/CocoaPods%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h1 id="CocoaPods的使用"><a href="#CocoaPods的使用" class="headerlink" title="CocoaPods的使用"></a>CocoaPods的使用</h1><ul>
+<li>Podfile.lock文件<ul>
+<li>最后一次更新Pods时, 所有第三方框架的版本号</li>
+</ul>
+</li>
+<li>常用指令的区别<ul>
+<li>pod install<ul>
+<li>会根据Podfile.lock文件中列举的版本号来安装第三方框架</li>
+<li>如果一开始Podfile.lock文件不存在, 就会按照Podfile文件列举的版本号来安装第三方框架</li>
+<li>安装框架之前, 默认会执行pod repo update指令</li>
+</ul>
+</li>
+<li>pod update<ul>
+<li>将所有第三方框架更新到最新版本, 并且创建一个新的Podfile.lock文件</li>
+<li>安装框架之前, 默认会执行pod repo update指令</li>
+</ul>
+</li>
+<li>pod install –no-repo-update</li>
+<li>pod update –no-repo-update<ul>
+<li>安装框架之前, 不会执行pod repo update指令”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[SDWebImage的内部实现]]></title>
+      <url>http://lavender1026.github.io/2015/05/04/SDWebImage%E7%9A%84%E5%86%85%E9%83%A8%E5%AE%9E%E7%8E%B0/</url>
+      <content type="html"><![CDATA[<p>#SDWebImage简介<br>SDWebImage是一个非常常用的开源第三方库,最简单的使用方式是以UIImageView类目的方式提供下载网络图片的方法.除此之外,还可以使用它作为图片异步下载器,图片自动缓存,支持gif动态图等,他会保证相同的URL图片资源只下载一次,永远不会锁住主线程,同时支持GCD和ARC,ARM64.使用SDWebImage下载网络图片可以提高性能.</p>
+<p>#在项目中的实际使用</p>
+<p>#1.第一步，下载SDWebImage，导入工程。github托管地址<a href="https://github.com/rs/SDWebImage" target="_blank" rel="external">https://github.com/rs/SDWebImage</a></p>
+<p>#2.第二步,在需要的地方导入头文件 #import “UIImageView+WebCache.h”</p>
+<p>#3.第三步,调用sd_setImageWithURL : 方法缓存图片, 2.0版本是使用setImageWithURL:<br><a id="more"></a></p>
+<p>1&gt;图片缓存的基本代码<br>sd_setImageWithURL:<br>[self.image sd_setImageWithURL: imageUrl];<br>2&gt; sd_setImageWithURL:completed:<br>[self.image sd_setImageWithURL: imageUrl completed:^(UIImage <em>iamge,NSError </em>err,SDImageCacheType cacheType, NSURL <em>imageURL){<br>NSLog(@”这里可以在图片加载之后做一些事情”)<br>}];<br>3&gt;设置一张占位图片,当图片加载完成之后在替换<br>sd_setImageWithURL:placeholderImage:<br>[self.image sd_setImageWithURL:imagePath1 placeholderImage:[UIImage imageNamed:@”default”]];<br>4&gt;使用默认图片,而且用block在完成之后做一些事情<br>sd_setImageWithURL:  placeholderImage:  completed:<br>[self.image sd_setImageWithURL:imagePath placeholderImage:[UIImage imageNamed:@”default”] completed:^(UIImage </em>image, NSError <em>error, SDImageCacheType cacheType, NSURL </em>imageURL) {<br>        NSLog(@”图片加载完成后做的事情”);<br>    }];<br>5&gt;sd_setImageWithURL:  placeholderImage: options<br>失败后重试<br>[self.image sd_setImageWithURL:imagePath placeholderImage:[UIImage imageNamed:@”default”] options:SDWebImageRetryFailed];</p>
+<p>#可选项options的所有选项</p>
+<pre><code>// 失败后重试
+SDWebImageRetryFailed = 1 &lt;&lt; 0,
+
+//UI交互期间开始下载，导致延迟下载比如UIScrollView减速。
+SDWebImageLowPriority = 1 &lt;&lt; 1,
+
+//只进行内存缓存
+SDWebImageCacheMemoryOnly = 1 &lt;&lt; 2,
+
+//这个标志可以渐进式下载,显示的图像是逐步在下载
+SDWebImageProgressiveDownload = 1 &lt;&lt; 3,
+
+//刷新缓存
+SDWebImageRefreshCached = 1 &lt;&lt; 4,
+
+//后台下载
+SDWebImageContinueInBackground = 1 &lt;&lt; 5,
+
+//NSMutableURLRequest.HTTPShouldHandleCookies = YES;
+
+SDWebImageHandleCookies = 1 &lt;&lt; 6,
+
+//允许使用无效的SSL证书
+//SDWebImageAllowInvalidSSLCertificates = 1 &lt;&lt; 7,
+
+//优先下载
+SDWebImageHighPriority = 1 &lt;&lt; 8,
+
+//延迟占位符
+SDWebImageDelayPlaceholder = 1 &lt;&lt; 9,
+
+//改变动画形象
+SDWebImageTransformAnimatedImage = 1 &lt;&lt; 10,
+</code></pre><p>#二 SDWebImage的内部实现过程<br>1.入口 setImageWithURL:placeholderImage:options:<br>先把  placeholderImage 显示<br>然后   SDWebImageManager 根据 URL 开始处理图片。<br>2.进入SDWebImageManager- downLoadImageWithURL :delegate:options:userInfo:<br>交给SDImageCache从缓存中查找图片是否已经下载完毕(通过方法queryDiskCacheForKey:delegate:userInfo:)<br>3.首先从内存图片缓存中查找是否有图片，如果内存中已经有图片缓存，SDImageCacheDelegate 回调 imageCache:didFindImage:forKey:userInfo: 到 SDWebImageManager。<br>4.SDWebImageManagerDelegate 回调 webImageManager:didFinishWithImage: 到 UIImageView+WebCache 等前端展示图片。<br>5.内存缓存中没有,生成NSInvocationOperation 添加到队列开始从硬盘查找图片是否已经缓存.<br>6.根据UELKey在硬盘缓存目录下尝试读取图片文件,这一步实在NSOperation进行的操作,所以会主线程进行结果回调notifyDelegate;<br>7.如果上一操作从硬盘读取到了图片，将图片添加到内存缓存中（如果空闲内存过小，会先清空内存缓存）。SDImageCacheDelegate 回调 imageCache:didFindImage:forKey:userInfo:。进而回调展示图片。<br>8.如果从硬盘缓存目录读取不到图片,说明所有缓存中都不存在该图片,需要下载图片,回调imageCache:didNotFindImageForKey: userInfo;<br>9.共享或重新生成一个下载器 SDWebImageDownloader 开始下载图片。<br>10.图片下载由 NSURLConnection 来做，实现相关 delegate 来判断图片下载中、下载完成和下载失败。<br>11.connection:didReceiveData: 中利用 ImageIO 做了按图片下载进度加载效果。<br>12.connectionDidFinishLoading: 数据下载完成后交给 SDWebImageDecoder 做图片解码处理。<br>13.图片解码处理在一个 NSOperationQueue 完成，不会拖慢主线程 UI。如果有需要对下载的图片进行二次处理，最好也在这里完成，效率会好很多。<br>14.在主线程 notifyDelegateOnMainThreadWithInfo: 宣告解码完成，imageDecoder:didFinishDecodingImage:userInfo: 回调给 SDWebImageDownloader。<br>15.imageDownloader:didFinishWithImage: 回调给 SDWebImageManager 告知图片下载完成。<br>16.通知所有的 downloadDelegates 下载完成，回调给需要的地方展示图片。<br>17.将图片保存到 SDImageCache 中，内存缓存和硬盘缓存同时保存。写文件到硬盘也在以单独 NSInvocationOperation 完成，避免拖慢主线程。<br>18.SDImageCache在初始化的时候会注册一些消息通知,在内存警告或者推到后台的时候清理内存图片缓存,应用结束的时候清理过期图片.<br>19.SDWebImage 也提供了 UIButton+WebCache 和 MKAnnotationView+WebCache，方便使用。<br>20.SDWebImagePrefetcher 可以预先下载图片，方便后续使用。<br>SDWebImage库的作用：<br>通过对UIImageView的类别扩展来实现异步加载替换图片的工作。</p>
+<p>#主要用到的类和对象：<br>1、UIImageView (WebCache)类别，入口封装，实现读取图片完成后的回调<br>2、SDWebImageManager，对图片进行管理的中转站，记录那些图片正在读取。<br>向下层读取Cache（调用SDImageCache），或者向网络读取对象（调用SDWebImageDownloader） 。<br>实现SDImageCache和SDWebImageDownloader的回调。<br>3、SDImageCache，根据URL的MD5摘要对图片进行存储和读取（实现存在内存中或者存在硬盘上两种实现）<br>实现图片和内存清理工作。<br>4、SDWebImageDownloader，根据URL向网络读取数据（实现部分读取和全部读取后再通知回调两种方式）</p>
+<p>其他类：<br>SDWebImageDecoder，异步对图像进行了一次解压</p>
+<p>#特别注意</p>
+<p>#1、SDImageCache是怎么做数据管理的?<br>SDImageCache分两个部分，一个是内存层面的，一个是硬盘层面的。<br>内存层面的相当是个缓存器，以Key-Value的形式存储图片。当内存不够的时候会清除所有缓存图片。<br>用搜索文件系统的方式做管理，文件替换方式是以时间为单位，剔除时间大于一周的图片文件。<br>当SDWebImageManager向SDImageCache要资源时，先搜索内存层面的数据，如果有直接返回，没有的话去访问磁盘，将图片从磁盘读取出来，然后做Decoder，将图片对象放到内存层面做备份，再返回调用层。</p>
+<p>#2、为什么必须做Decoder?<br>通过这个博客：<a href="http://www.cocoanetics.com/2011/10/avoiding-image-decompression-sickness/" target="_blank" rel="external">http://www.cocoanetics.com/2011/10/avoiding-image-decompression-sickness/</a><br>了解到，由于UIImage的imageWithData函数是每次画图的时候才将Data解压成ARGB的图像<br>所以在每次画图的时候，会有一个解压操作，这样效率很低，但是只有瞬时的内存需求。<br>为了提高效率通过SDWebImageDecoder将包装在Data下的资源解压，然后画在另外一张图片上，这样这张新图片就不再需要重复解压了。<br>这种做法是典型的空间换时间的做法.</p>
+<p>#最后整理一波思路<br>1.入口 setImageWithURL:placeholderImage:options: 显示占位图<br>                      |<br>        2.SDWebImageManager根据url处理图片<br>                      |</p>
+<ol>
+<li>SDWebImageManager调用downloadWithURL方法-&gt;让SDImageCache从缓存查找图片是否已经下载                              <pre><code>         |
+先从内存缓存中查找                             
+       有|
+</code></pre></li>
+<li>SDImageCacheDelegate回调 didFindImage到SDWebImageManager<br>SDWebImageManagerDelegate回调didFinishWithImage到<br>UIImageView+WebCache 等前端展示图片<pre><code>没有|
+</code></pre>5.生成 NSInvocationOperation 添加到队列开始从硬盘查找图片是否已经缓存<pre><code>|
+</code></pre></li>
+<li>根据URLKey在硬盘缓存目录下尝试读取图片文件.NSOperation中完成<pre><code>读取到|
+</code></pre>7.将图片添加到内存缓存中,内存缓存过小,会先清空内存缓存SDImageCacheDelegate回调didFindImage到SDWebImageManager <pre><code>没有读取到|
+</code></pre>8.SDImageCacheDelegate回调imagedidNotFindImageForKey<pre><code>|
+</code></pre>9.共享或重新生成一个下载器SDWebImageDownloader开始下载图片<pre><code>|
+</code></pre>10.图片下载由 NSURLConnection负责 通过监听代理方法可以判断图片下载中和下载完成和下载失败.<pre><code>|
+</code></pre>11.可以在connection:didReceiveData:中实现按图片下载进度加载效果<pre><code>|
+</code></pre>12.connectionDidFinishLoading: 数据下载完成后交给 SDWebImageDecoder 做图片解码处理。<pre><code>|
+</code></pre>13.图片解码处理在一个NSOperationQueue中完成,不会拖慢主线程UI. #mark:如果有需要对下载图片进行二次处理可以在这里<pre><code>|
+</code></pre>14.在主线程 notifyDelegateOnMainThreadWithInfo: 宣告解码完成，imageDecoder:didFinishDecodingImage:userInfo: 回调给 SDWebImageDownloader。<pre><code>|
+</code></pre>15.imageDownIoader:didFinishWithImage:回调给SDWebImageManager告知图片下载完成<pre><code>|
+</code></pre>16.通知所有的 downloadDelegates 下载完成，回调给需要的地方展示图片。<pre><code>|
+</code></pre>17.将图片保存到 SDImageCache 中，内存缓存和硬盘缓存同时保存。写文件到硬盘也在以 NSInvocationOperation 完成，避免拖慢主线程<pre><code>|
+</code></pre>18.SDImageCache 在初始化的时候会注册一些消息通知，在内存警告或退到后台的时候清理内存图片缓存，应用结束的时候清理过期图片<pre><code>|
+</code></pre>19.SDImageCache 在初始化的时候会注册一些消息通知，在内存警告或退到后台的时候清理内存图片缓存，应用结束的时候清理过期图片</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Scoket以及TCP/IP的理解]]></title>
+      <url>http://lavender1026.github.io/2015/05/02/Scoket%E4%BB%A5%E5%8F%8ATCP:IP%E7%9A%84%E7%90%86%E8%A7%A3/</url>
+      <content type="html"><![CDATA[<p>#socket简介及特性<br>1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。</p>
+<p>2.多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，计算机操作系统为应用程序与TCP/IP协议交互提供了套接字(Socket)接口。应用层可以和传输层通过Socket接口，区分来自不同应用程序进程或网络连接的通信，实现数据传输的并发服务。</p>
+<p>3.建立Socket连接至少需要一对套接字，其中一个运行于客户端，称为ClientSocket，另一个运行于服务器端，称为ServerSocket。套接字之间的连接过程分为三个步骤：服务器监听，客户端请求，连接确认。</p>
+<p>Socket可以支持不同的传输层协议（TCP或UDP），当使用TCP协议进行连接时，该Socket连接就是一个TCP连接,UDP连接同理。<br><a id="more"></a></p>
+<p>#socket使用的库函数<br>1.创建套接字</p>
+<p>Socket(af,type,protocol)//建立地址和套接字的联系<br>bind(sockid, local addr, addrlen)//服务器端侦听客户端的请求<br>listen( Sockid ,quenlen)//建立服务器/客户端的连接 (面向连接TCP）</p>
+<p>2.客户端请求连接</p>
+<p>Connect(sockid, destaddr, addrlen)//服务器端等待从编号为Sockid的Socket上接收客户连接请求<br>newsockid=accept(Sockid，Clientaddr, paddrlen)//发送/接收数据</p>
+<p>3.面向连接：</p>
+<p>send(sockid, buff, bufflen)<br>recv()</p>
+<p>4.面向无连接：</p>
+<p>sendto(sockid,buff,…,addrlen)<br>recvfrom()</p>
 ]]></content>
     </entry>
     
