@@ -47,7 +47,7 @@
 				<h1 class="site-name"><a href="/" title="Lavender">Lavender</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -63,7 +63,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:lavender1026.github.io">
 					</form>
 					
@@ -81,120 +81,6 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/07/12/地图定位CoreLocation框架的使用(2)/" title="地图定位CoreLocation框架的使用(2)" itemprop="url">地图定位CoreLocation框架的使用(2)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
-		
-  <p class="article-time">
-    <time datetime="2015-07-11T18:04:11.000Z" itemprop="datePublished"> Published 2015-07-12</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="CoreLocation框架"><a href="#CoreLocation框架" class="headerlink" title="CoreLocation框架"></a>CoreLocation框架</h1><p>#四. CLLocation对象详解 </p>
-<p>#1. 属性解释</p>
-<pre><code>    &gt; coordinate
-&gt; altitude
-&gt; speed
-&gt; course
-</code></pre><p>#2. 重要方法<br>: 当前位置所在的经纬度数据<br>: 海拔<br>: 当前速度<br>: 航向(设备移动的方向, 值域范围:0.0 ~ 259.9, 正北方向为0.0)<br>代码: - (CLLocationDistance)distanceFromLocation:(CLLocation *)location 作用: 计算两个位置对象之间的物理距离, 单位是(米)<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/07/12/地图定位CoreLocation框架的使用(2)/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/07/12/地图定位CoreLocation框架的使用(2)/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/" title="地图定位CoreLocation框架的使用(1)" itemprop="url">地图定位CoreLocation框架的使用(1)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
-		
-  <p class="article-time">
-    <time datetime="2015-07-11T15:04:11.000Z" itemprop="datePublished"> Published 2015-07-11</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="CoreLocation框架"><a href="#CoreLocation框架" class="headerlink" title="CoreLocation框架"></a>CoreLocation框架</h1><h1 id="一-IOS8-0之前的定位"><a href="#一-IOS8-0之前的定位" class="headerlink" title="一:IOS8.0之前的定位"></a>一:IOS8.0之前的定位</h1><p>#1. 前台定位<br>导入CoreLocation框架以及对应的主头文件 <CoreLocation/CoreLocation.h><br>创建CLLocationManager对象并设置代理<br>       self.locationM = [[CLLocationManager alloc] init];<br>       self.locationM.delegate = self;<br>调用方法,开始更新用户位置信息<br>[self.locationM startUpdatingLocation];<br>  在对应的代理方法中获取位置信息<br>       -(void)locationManager:(nonnull CLLocationManager *)manager didUpdateL<br>{<br>NSLog(@”每当请求到位置信息时, 都会调用此方法”);<br>}<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
       <a href="/2015/06/20/项目管理Git的常用命令/" title="项目管理Git常用命令" itemprop="url">项目管理Git常用命令</a>
   </h1>
   <p class="article-author">By
@@ -202,7 +88,7 @@
 		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-20T11:32:17.000Z" itemprop="datePublished"> Published 2015-06-20</time>
+    <time datetime="2015-06-20T11:32:17.000Z" itemprop="datePublished"> 发表于 2015-06-20</time>
     
   </p>
 </header>
@@ -256,7 +142,7 @@
 		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
 		
   <p class="article-time">
-    <time datetime="2015-06-11T14:51:17.000Z" itemprop="datePublished"> Published 2015-06-11</time>
+    <time datetime="2015-06-11T14:51:17.000Z" itemprop="datePublished"> 发表于 2015-06-11</time>
     
   </p>
 </header>
@@ -333,7 +219,7 @@
 		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
 		
   <p class="article-time">
-    <time datetime="2015-05-04T12:51:17.000Z" itemprop="datePublished"> Published 2015-05-04</time>
+    <time datetime="2015-05-04T12:51:17.000Z" itemprop="datePublished"> 发表于 2015-05-04</time>
     
   </p>
 </header>
@@ -391,7 +277,7 @@
 		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
 		
   <p class="article-time">
-    <time datetime="2015-05-02T01:51:17.000Z" itemprop="datePublished"> Published 2015-05-02</time>
+    <time datetime="2015-05-02T01:51:17.000Z" itemprop="datePublished"> 发表于 2015-05-02</time>
     
   </p>
 </header>
@@ -448,7 +334,7 @@
 		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-15T14:41:52.000Z" itemprop="datePublished"> Published 2015-01-15</time>
+    <time datetime="2015-01-15T14:41:52.000Z" itemprop="datePublished"> 发表于 2015-01-15</time>
     
   </p>
 </header>
@@ -506,15 +392,15 @@
   </nav>
 
 </div>
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -539,7 +425,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -575,7 +461,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -750,7 +636,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
