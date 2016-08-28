@@ -26,7 +26,7 @@
 <meta property="og:image" content="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_5.png">
 <meta property="og:image" content="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_9.png">
 <meta property="og:image" content="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_13.png">
-<meta property="og:updated_time" content="2016-08-25T14:48:04.000Z">
+<meta property="og:updated_time" content="2016-08-28T15:40:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建博客那些事">
 <meta name="twitter:description" content="很久之前就想把博客从CSDN上迁移过来，只是一直没有时间，最近比较闲就用hexo+git搭建了博客。网上有很多教程都不是很仔细，搭建博客的时候总有意想不到的问题，昨天捣鼓了许久，踩了很多坑。写下这篇博客来帮助一下更多的人。主要是针对几个坑来帮助一下大家
@@ -59,7 +59,7 @@
 				<h1 class="site-name"><a href="/" title="Lavender">Lavender</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -75,7 +75,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:lavender1026.github.io">
 					</form>
 					
@@ -98,14 +98,14 @@
 		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
 		
   <p class="article-time">
-    <time datetime="2015-01-15T14:41:52.000Z" itemprop="datePublished"> 发表于 2015-01-15</time>
+    <time datetime="2015-01-15T14:41:52.000Z" itemprop="datePublished"> Published 2015-01-15</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#博客的搭建"><span class="toc-number">1.</span> <span class="toc-text">博客的搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名"><span class="toc-number">2.</span> <span class="toc-text">域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评论"><span class="toc-number">3.</span> <span class="toc-text">评论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图床"><span class="toc-number">4.</span> <span class="toc-text">图床</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布博客"><span class="toc-number">5.</span> <span class="toc-text">发布博客</span></a></li></ol>
 		
@@ -113,7 +113,7 @@
 		
 		<p>很久之前就想把博客从CSDN上迁移过来，只是一直没有时间，最近比较闲就用hexo+git搭建了博客。<br>网上有很多教程都不是很仔细，搭建博客的时候总有意想不到的问题，昨天捣鼓了许久，踩了很多坑。写下这篇博客来帮助一下更多的人。主要是针对几个坑来帮助一下大家</p>
 <h2 id="博客的搭建"><a href="#博客的搭建" class="headerlink" title="博客的搭建"></a>博客的搭建</h2><p>博客的基本搭建可以参考这个<a href="http://www.jianshu.com/p/465830080ea9" target="_blank" rel="external">搭建免费个人博客</a>教程。<br>讲解的十分详细<br><a id="more"></a></p>
-<p>针对几个hexo 命令<br><img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_2.png" alt=""><br>报的原因是因为没有获取权限 ，如果你的机器有密码，一般 都要 前面加上sudo 即可<br>而上文中的一个常用的命令</p>
+<p>针对几个hexo  命令<br><img src="http://7xuf0o.com1.z0.glb.clouddn.com/Snip20160523_2.png" alt=""><br>报的原因是因为没有获取权限 ，如果你的机器有密码，一般 都要 前面加上sudo 即可<br>而上文中的一个常用的命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
 <p>也应该改成</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hexo clean &amp;&amp; sudo hexo g &amp;&amp;  sudo hexo d</span><br></pre></td></tr></table></figure>
@@ -186,22 +186,22 @@
 </section>
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#博客的搭建"><span class="toc-number">1.</span> <span class="toc-text">博客的搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#域名"><span class="toc-number">2.</span> <span class="toc-text">域名</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#评论"><span class="toc-number">3.</span> <span class="toc-text">评论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图床"><span class="toc-number">4.</span> <span class="toc-text">图床</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#发布博客"><span class="toc-number">5.</span> <span class="toc-text">发布博客</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分类</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -226,7 +226,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">标签</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -262,7 +262,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -534,7 +534,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
