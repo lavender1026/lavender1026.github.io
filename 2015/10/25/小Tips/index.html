@@ -41,7 +41,7 @@ po [[self view]recursiveDescription]
 当本视图的大小发生改变的时候是会调用的
 当子视图的frame发生改变的时候是会调用的
 当删除子视图的时">
-<meta property="og:updated_time" content="2016-05-31T08:04:25.000Z">
+<meta property="og:updated_time" content="2016-09-05T15:53:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode小Tips">
 <meta name="twitter:description" content="整理一下自己开发过程中用到的小技巧小tips
@@ -220,9 +220,9 @@ UIWindow *window = app.window;
 </blockquote>
 <p>18，修改UITextField中Placeholder的文字颜色</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[text setValue:[UIColor redColor] forKeyPath:@&quot;_placeholderLabel.textColor&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>19，视图的生命周期<br>1、 alloc 创建对象，分配空间<br>2、 init (initWithNibName) 初始化对象，初始化数据<br>3、 loadView 从nib载入视图 ，除非你没有使用xib文件创建视图<br>4、 viewDidLoad 载入完成，可以进行自定义数据以及动态创建其他控件<br>5、 viewWillAppear视图将出现在屏幕之前，马上这个视图就会被展现在屏幕上了<br>6、 viewDidAppear 视图已在屏幕上渲染完成</p>
-<p>1、viewWillDisappear 视图将被从屏幕上移除之前执行<br>2、viewDidDisappear 视图已经被从屏幕上移除，用户看不到这个视图了<br>3、dealloc 视图被销毁，此处需要对你在init和viewDidLoad中创建的对象进行释放.</p>
-<p>viewVillUnload－ 当内存过低，即将释放时调用；<br>viewDidUnload－当内存过低，释放一些不需要的视图时调用。</p>
+<p>19，视图的生命周期<br> 1、 alloc 创建对象，分配空间<br> 2、 init (initWithNibName) 初始化对象，初始化数据<br> 3、 loadView 从nib载入视图 ，除非你没有使用xib文件创建视图<br> 4、 viewDidLoad 载入完成，可以进行自定义数据以及动态创建其他控件<br> 5、 viewWillAppear视图将出现在屏幕之前，马上这个视图就会被展现在屏幕上了<br> 6、 viewDidAppear 视图已在屏幕上渲染完成</p>
+<p> 1、viewWillDisappear 视图将被从屏幕上移除之前执行<br> 2、viewDidDisappear 视图已经被从屏幕上移除，用户看不到这个视图了<br> 3、dealloc 视图被销毁，此处需要对你在init和viewDidLoad中创建的对象进行释放.</p>
+<p> viewVillUnload－ 当内存过低，即将释放时调用；<br> viewDidUnload－当内存过低，释放一些不需要的视图时调用。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
