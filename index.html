@@ -487,6 +487,100 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/11/17/quicklook/" title="quickLook 插件安装 让你的开发更效率" itemprop="url">quickLook 插件安装 让你的开发更效率</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
+		
+  <p class="article-time">
+    <time datetime="2015-11-16T18:10:02.000Z" itemprop="datePublished"> Published 2015-11-17</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用 OSX 的朋友对于这个系统当中的 QuickLook 一定不会陌生，无论在哪里，几乎操作系统的全部地方，对于图片的内容，你都可以选中它，然后按下空格来快速查看这张图片是什么而不需要打开看图软件或者图片编辑器；或者一些文本的文档以及其他视频和音频——这实在是太方便了。</p>
+<p>不过，这个 QuickLook 也不是那么万能，比如说它只能支持苹果预置的几种常见格式（纯文本文档，MP4 格式的视频，MP3 格式的音频以及 JPEG 和 PNG 格式的图片等），一旦遇到点新颖的就不灵验了，比如同样是纯文本的 Markdown,json,看着就不是很舒服。那这里我就给大家推荐一下quicklook可以安装的小插件</p>
+<p>Homebrew<br>首先，安装插件我们需要先装上，Homebrew，那你可以来<a href="http://brew.sh/" target="_blank" rel="external">这里</a>看看，总之，打开你的终端，我们使用下面的代码来安装 brew：<br><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
+<p>下面是我常用的一些插件</p>
+<table>
+<thead>
+<tr>
+<th>qlmarkdown</th>
+<th>用于快速查看markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qlcolorrode</td>
+<td>使quicklook支持代码高亮</td>
+</tr>
+<tr>
+<td>betterzipql</td>
+<td>空格可以查看压缩包内容</td>
+</tr>
+<tr>
+<td>qlimagesize</td>
+<td>查看图片同时可以显示尺寸</td>
+</tr>
+<tr>
+<td>qljson</td>
+<td>可以按格式显示json</td>
+</tr>
+</tbody>
+</table>
+<p>然后，我们就可以使用命令  brew cask 来让 brew 自动配置 cask 了。</p>
+<p><code>brew cask install qlcolorcode qlmarkdown quicklook-csv betterzipql qlimagesize qljson</code><br>然后，其实还有更多的格式支持，大家可以再去<a href="http://www.quicklookplugins.com/" target="_blank" rel="external">这里</a>自行DIY</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/工具/">工具</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/常用工具/">常用工具</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/11/17/quicklook/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/10/25/小Tips/" title="Xcode小Tips" itemprop="url">Xcode小Tips</a>
   </h1>
   <p class="article-author">By
@@ -682,60 +776,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/" title="地图定位CoreLocation框架的使用(1)" itemprop="url">地图定位CoreLocation框架的使用(1)</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
-		
-  <p class="article-time">
-    <time datetime="2015-07-11T15:04:11.000Z" itemprop="datePublished"> Published 2015-07-11</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="CoreLocation框架"><a href="#CoreLocation框架" class="headerlink" title="CoreLocation框架"></a>CoreLocation框架</h1><h1 id="一-IOS8-0之前的定位"><a href="#一-IOS8-0之前的定位" class="headerlink" title="一:IOS8.0之前的定位"></a>一:IOS8.0之前的定位</h1><p>#1. 前台定位<br>导入CoreLocation框架以及对应的主头文件 <CoreLocation/CoreLocation.h><br>创建CLLocationManager对象并设置代理<br>       self.locationM = [[CLLocationManager alloc] init];<br>       self.locationM.delegate = self;<br>调用方法,开始更新用户位置信息<br>[self.locationM startUpdatingLocation];<br>  在对应的代理方法中获取位置信息<br>       -(void)locationManager:(nonnull CLLocationManager *)manager didUpdateL<br>{<br>NSLog(@”每当请求到位置信息时, 都会调用此方法”);<br>}<br>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/#more">阅读全文</a>
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-	  	<span></span>
-		<a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/#disqus_thread" class="comments-count-link">Comments</a>
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next<span></span></a>
@@ -758,7 +798,7 @@
 		  
 		
 		  
-			<li><a href="/categories/工具/" title="工具">工具<sup>2</sup></a></li>
+			<li><a href="/categories/工具/" title="工具">工具<sup>3</sup></a></li>
 		  
 		
 		  
@@ -788,6 +828,10 @@
 		
 			
 				<li><a href="/tags/debug/" title="debug">debug<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/常用工具/" title="常用工具">常用工具<sup>1</sup></a></li>
 			
 		
 			

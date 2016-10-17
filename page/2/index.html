@@ -81,6 +81,60 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/" title="地图定位CoreLocation框架的使用(1)" itemprop="url">地图定位CoreLocation框架的使用(1)</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
+		
+  <p class="article-time">
+    <time datetime="2015-07-11T15:04:11.000Z" itemprop="datePublished"> Published 2015-07-11</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="CoreLocation框架"><a href="#CoreLocation框架" class="headerlink" title="CoreLocation框架"></a>CoreLocation框架</h1><h1 id="一-IOS8-0之前的定位"><a href="#一-IOS8-0之前的定位" class="headerlink" title="一:IOS8.0之前的定位"></a>一:IOS8.0之前的定位</h1><p>#1. 前台定位<br>导入CoreLocation框架以及对应的主头文件 <CoreLocation/CoreLocation.h><br>创建CLLocationManager对象并设置代理<br>       self.locationM = [[CLLocationManager alloc] init];<br>       self.locationM.delegate = self;<br>调用方法,开始更新用户位置信息<br>[self.locationM startUpdatingLocation];<br>  在对应的代理方法中获取位置信息<br>       -(void)locationManager:(nonnull CLLocationManager *)manager didUpdateL<br>{<br>NSLog(@”每当请求到位置信息时, 都会调用此方法”);<br>}<br>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/#more">阅读全文</a>
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+	  	<span></span>
+		<a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/#disqus_thread" class="comments-count-link">Comments</a>
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/06/20/项目管理Git的常用命令/" title="项目管理Git常用命令" itemprop="url">项目管理Git常用命令</a>
   </h1>
   <p class="article-author">By
@@ -408,7 +462,7 @@
 		  
 		
 		  
-			<li><a href="/categories/工具/" title="工具">工具<sup>2</sup></a></li>
+			<li><a href="/categories/工具/" title="工具">工具<sup>3</sup></a></li>
 		  
 		
 		  
@@ -438,6 +492,10 @@
 		
 			
 				<li><a href="/tags/debug/" title="debug">debug<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/常用工具/" title="常用工具">常用工具<sup>1</sup></a></li>
 			
 		
 			

@@ -4,38 +4,26 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>各类加密算法 | Lavender</title>
+    <title>quickLook 插件安装 让你的开发更效率 | Lavender</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="DirkChen">
     
 
     
-    <meta name="description" content="加密算法介绍加密算法应该属于计算机专业密码学中的一些知识，这里总结一下从网上看到的知识，方便以后的查阅。
-加密算法有很多种，一般有主要三类
-
-对称型算法
-非对称性算法
-散列算法">
+    <meta name="description" content="前言使用 OSX 的朋友对于这个系统当中的 QuickLook 一定不会陌生，无论在哪里，几乎操作系统的全部地方，对于图片的内容，你都可以选中它，然后按下空格来快速查看这张图片是什么而不需要打开看图软件或者图片编辑器；或者一些文本的文档以及其他视频和音频——这实在是太方便了。
+不过，这个 QuickLook 也不是那么万能，比如说它只能支持苹果预置的几种常见格式（纯文本文档，MP4 格式的视频，M">
 <meta property="og:type" content="article">
-<meta property="og:title" content="各类加密算法">
-<meta property="og:url" content="http://lavender1026.github.io/2016/08/07/加密算法/index.html">
+<meta property="og:title" content="quickLook 插件安装 让你的开发更效率">
+<meta property="og:url" content="http://lavender1026.github.io/2015/11/17/quicklook/index.html">
 <meta property="og:site_name" content="Lavender">
-<meta property="og:description" content="加密算法介绍加密算法应该属于计算机专业密码学中的一些知识，这里总结一下从网上看到的知识，方便以后的查阅。
-加密算法有很多种，一般有主要三类
-
-对称型算法
-非对称性算法
-散列算法">
-<meta property="og:updated_time" content="2016-09-07T15:18:04.000Z">
+<meta property="og:description" content="前言使用 OSX 的朋友对于这个系统当中的 QuickLook 一定不会陌生，无论在哪里，几乎操作系统的全部地方，对于图片的内容，你都可以选中它，然后按下空格来快速查看这张图片是什么而不需要打开看图软件或者图片编辑器；或者一些文本的文档以及其他视频和音频——这实在是太方便了。
+不过，这个 QuickLook 也不是那么万能，比如说它只能支持苹果预置的几种常见格式（纯文本文档，MP4 格式的视频，M">
+<meta property="og:updated_time" content="2016-10-17T09:33:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="各类加密算法">
-<meta name="twitter:description" content="加密算法介绍加密算法应该属于计算机专业密码学中的一些知识，这里总结一下从网上看到的知识，方便以后的查阅。
-加密算法有很多种，一般有主要三类
-
-对称型算法
-非对称性算法
-散列算法">
+<meta name="twitter:title" content="quickLook 插件安装 让你的开发更效率">
+<meta name="twitter:description" content="前言使用 OSX 的朋友对于这个系统当中的 QuickLook 一定不会陌生，无论在哪里，几乎操作系统的全部地方，对于图片的内容，你都可以选中它，然后按下空格来快速查看这张图片是什么而不需要打开看图软件或者图片编辑器；或者一些文本的文档以及其他视频和音频——这实在是太方便了。
+不过，这个 QuickLook 也不是那么万能，比如说它只能支持苹果预置的几种常见格式（纯文本文档，MP4 格式的视频，M">
 
     
     <link rel="alternative" href="/atom.xml" title="Lavender" type="application/atom+xml">
@@ -95,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2016/08/07/加密算法/" title="各类加密算法" itemprop="url">各类加密算法</a>
+      <a href="/2015/11/17/quicklook/" title="quickLook 插件安装 让你的开发更效率" itemprop="url">quickLook 插件安装 让你的开发更效率</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
 		
   <p class="article-time">
-    <time datetime="2016-08-07T14:23:14.000Z" itemprop="datePublished"> Published 2016-08-07</time>
+    <time datetime="2015-11-16T18:10:02.000Z" itemprop="datePublished"> Published 2015-11-17</time>
     
   </p>
 </header>
@@ -111,27 +99,57 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#加密算法介绍"><span class="toc-number">1.</span> <span class="toc-text">加密算法介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-对称性加密算法"><span class="toc-number">1.1.</span> <span class="toc-text">1.对称性加密算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非对称性加密算法"><span class="toc-number">1.2.</span> <span class="toc-text">非对称性加密算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性散列算法-签名算法"><span class="toc-number">1.3.</span> <span class="toc-text">线性散列算法(签名算法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对称与非对称算法比较"><span class="toc-number">1.4.</span> <span class="toc-text">对称与非对称算法比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密算法的选择"><span class="toc-number">1.5.</span> <span class="toc-text">加密算法的选择</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="加密算法介绍"><a href="#加密算法介绍" class="headerlink" title="加密算法介绍"></a>加密算法介绍</h1><p>加密算法应该属于计算机专业密码学中的一些知识，这里总结一下从网上看到的知识，方便以后的查阅。</p>
-<p>加密算法有很多种，一般有主要三类</p>
-<ol>
-<li>对称型算法</li>
-<li>非对称性算法</li>
-<li>散列算法<a id="more"></a>
-<h2 id="1-对称性加密算法"><a href="#1-对称性加密算法" class="headerlink" title="1.对称性加密算法"></a>1.对称性加密算法</h2>对称性加密算法有AES,DES,3DES。其中，DES是一种分组数据加密技术（先将数据分成固定长度的小数据块，之后进行加密），速度较快，适用于大量数据加密，而3DES是一种基于DES的加密算法，使用3个不同密匙对同一个分组数据块进行3次加密，如此以使得密文强度更高。<br>相较于DES和3DES算法而言，AES算法有着更高的速度和资源使用效率，安全级别也较之更高了，被称为下一代加密标准。</li>
-</ol>
-<h2 id="非对称性加密算法"><a href="#非对称性加密算法" class="headerlink" title="非对称性加密算法"></a>非对称性加密算法</h2><p>非对称性加密算法有RSA,DSA,ECC。这其中，RSA和DSA的安全性及其它各方面性能都差不多，而ECC较之则有着很多的性能优越，包括处理速度，带宽要求，存储空间等等</p>
-<h2 id="线性散列算法-签名算法"><a href="#线性散列算法-签名算法" class="headerlink" title="线性散列算法(签名算法)"></a>线性散列算法(签名算法)</h2><p>MD5,SHA1,HMAC<br>这几种算法只生成一串不可逆的密文，经常用其效验数据传输过程中是否经过修改，因为相同的生成算法对于同一明文只会生成唯一的密文，若相同算法生成的密文不同，则证明传输数据进行过了修改。通常在数据传说过程前，使用MD5和SHA1算法均需要发送和接收数据双方在数据传送之前就知道密匙生成算法，而HMAC与之不同的是需要生成一个密匙，发送方用此密匙对数据进行摘要处理（生成密文），接收方再利用此密匙对接收到的数据进行摘要处理，再判断生成的密文是否相同。</p>
-<h2 id="对称与非对称算法比较"><a href="#对称与非对称算法比较" class="headerlink" title="对称与非对称算法比较"></a>对称与非对称算法比较</h2><p>  以上综述了两种加密方法的原理，总体来说主要有下面几个方面的不同：<br>l         在管理方面：公钥密码算法只需要较少的资源就可以实现目的，在密钥的分配上，两者之间相差一个指数级别（一个是n一个是n2）。所以私钥密码算法不适应广域网的使用，而且更重要的一点是它不支持数字签名。<br>l         在安全方面：由于公钥密码算法基于未解决的数学难题，在破解上几乎不可能。对于私钥密码算法，到了AES虽说从理论来说是不可能破解的，但从计算机的发展角度来看。公钥更具有优越性。<br>l         从速度上来看：AES的软件实现速度已经达到了每秒数兆或数十兆比特。是公钥的100倍，如果用硬件来实现的话这个比值将扩大到1000倍。</p>
-<h2 id="加密算法的选择"><a href="#加密算法的选择" class="headerlink" title="加密算法的选择"></a>加密算法的选择</h2><p>由于非对称加密算法的运行速度比对称加密算法的速度慢很多，当我们需要加密大量的数据时，建议采用对称加密算法，提高加解密速度。<br>对称加密算法不能实现签名，因此签名只能非对称算法。<br>由于对称加密算法的密钥管理是一个复杂的过程，密钥的管理直接决定着他的安全性，因此当数据量很小时，我们可以考虑采用非对称加密算法。<br>在实际的操作过程中，我们通常采用的方式是：采用非对称加密算法管理对称算法的密钥，然后用对称加密算法加密数据，这样我们就集成了两类加密算法的优点，既实现了加密速度快的优点，又实现了安全方便管理密钥的优点。<br>那采用多少位的密钥呢？ RSA建议采用1024位的数字，ECC建议采用160位，AES采用128为即可。</p>
+		<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用 OSX 的朋友对于这个系统当中的 QuickLook 一定不会陌生，无论在哪里，几乎操作系统的全部地方，对于图片的内容，你都可以选中它，然后按下空格来快速查看这张图片是什么而不需要打开看图软件或者图片编辑器；或者一些文本的文档以及其他视频和音频——这实在是太方便了。</p>
+<p>不过，这个 QuickLook 也不是那么万能，比如说它只能支持苹果预置的几种常见格式（纯文本文档，MP4 格式的视频，MP3 格式的音频以及 JPEG 和 PNG 格式的图片等），一旦遇到点新颖的就不灵验了，比如同样是纯文本的 Markdown,json,看着就不是很舒服。那这里我就给大家推荐一下quicklook可以安装的小插件</p>
+<p>Homebrew<br>首先，安装插件我们需要先装上，Homebrew，那你可以来<a href="http://brew.sh/" target="_blank" rel="external">这里</a>看看，总之，打开你的终端，我们使用下面的代码来安装 brew：<br><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
+<p>下面是我常用的一些插件</p>
+<table>
+<thead>
+<tr>
+<th>qlmarkdown</th>
+<th>用于快速查看markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qlcolorrode</td>
+<td>使quicklook支持代码高亮</td>
+</tr>
+<tr>
+<td>betterzipql</td>
+<td>空格可以查看压缩包内容</td>
+</tr>
+<tr>
+<td>qlimagesize</td>
+<td>查看图片同时可以显示尺寸</td>
+</tr>
+<tr>
+<td>qljson</td>
+<td>可以按格式显示json</td>
+</tr>
+</tbody>
+</table>
+<p>然后，我们就可以使用命令  brew cask 来让 brew 自动配置 cask 了。</p>
+<p><code>brew cask install qlcolorcode qlmarkdown quicklook-csv betterzipql qlimagesize qljson</code><br>然后，其实还有更多的格式支持，大家可以再去<a href="http://www.quicklookplugins.com/" target="_blank" rel="external">这里</a>自行DIY</p>
   
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/工具/">工具</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/常用工具/">常用工具</a>
+  </div>
 
 </div>
 
@@ -139,7 +157,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://lavender1026.github.io/2016/08/07/加密算法/" data-title="各类加密算法 | Lavender" data-tsina="null" class="share clearfix">
+	  <div data-url="http://lavender1026.github.io/2015/11/17/quicklook/" data-title="quickLook 插件安装 让你的开发更效率 | Lavender" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -152,11 +170,19 @@
 	
 <nav class="article-nav clearfix">
  
+ <div class="prev" >
+ <a href="/2016/01/17/iOS百宝箱/" title="iOS百宝箱">
+  <strong>上一篇：</strong><br/>
+  <span>
+  iOS百宝箱</span>
+</a>
+</div>
+
 
 <div class="next">
-<a href="/2016/07/30/2016-07-30/"  title="OC混编">
+<a href="/2015/10/25/小Tips/"  title="Xcode小Tips">
  <strong>下一篇：</strong><br/> 
- <span>OC混编
+ <span>Xcode小Tips
 </span>
 </a>
 </div>
@@ -177,7 +203,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#加密算法介绍"><span class="toc-number">1.</span> <span class="toc-text">加密算法介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-对称性加密算法"><span class="toc-number">1.1.</span> <span class="toc-text">1.对称性加密算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#非对称性加密算法"><span class="toc-number">1.2.</span> <span class="toc-text">非对称性加密算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#线性散列算法-签名算法"><span class="toc-number">1.3.</span> <span class="toc-text">线性散列算法(签名算法)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对称与非对称算法比较"><span class="toc-number">1.4.</span> <span class="toc-text">对称与非对称算法比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#加密算法的选择"><span class="toc-number">1.5.</span> <span class="toc-text">加密算法的选择</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
  
   </div>
 
