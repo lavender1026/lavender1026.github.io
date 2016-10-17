@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title><![CDATA[quickLook 插件安装 让你的开发更效率]]></title>
+      <url>http://lavender1026.github.io/2016/10/17/quicklook/</url>
+      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用 OSX 的朋友对于这个系统当中的 QuickLook 一定不会陌生，无论在哪里，几乎操作系统的全部地方，对于图片的内容，你都可以选中它，然后按下空格来快速查看这张图片是什么而不需要打开看图软件或者图片编辑器；或者一些文本的文档以及其他视频和音频——这实在是太方便了。</p>
+<p>不过，这个 QuickLook 也不是那么万能，比如说它只能支持苹果预置的几种常见格式（纯文本文档，MP4 格式的视频，MP3 格式的音频以及 JPEG 和 PNG 格式的图片等），一旦遇到点新颖的就不灵验了，比如同样是纯文本的 Markdown,json,看着就不是很舒服。那这里我就给大家推荐一下quicklook可以安装的小插件</p>
+<p>Homebrew<br>首先，安装插件我们需要先装上，Homebrew，那你可以来<a href="http://brew.sh/" target="_blank" rel="external">这里</a>看看，总之，打开你的终端，我们使用下面的代码来安装 brew：<br><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
+<p>下面是我常用的一些插件</p>
+<table>
+<thead>
+<tr>
+<th>qlmarkdown</th>
+<th>用于快速查看markdown</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>qlcolorrode</td>
+<td>使quicklook支持代码高亮</td>
+</tr>
+<tr>
+<td>betterzipql</td>
+<td>空格可以查看压缩包内容</td>
+</tr>
+<tr>
+<td>qlimagesize</td>
+<td>查看图片同时可以显示尺寸</td>
+</tr>
+<tr>
+<td>qljson</td>
+<td>可以按格式显示json</td>
+</tr>
+</tbody>
+</table>
+<p>然后，我们就可以使用命令  brew cask 来让 brew 自动配置 cask 了。</p>
+<p><code>brew cask install qlcolorcode qlmarkdown quicklook-csv betterzipql qlimagesize qljson</code><br>然后，其实还有更多的格式支持，大家可以再去<a href="http://www.quicklookplugins.com/" target="_blank" rel="external">这里</a>自行DIY</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[各类加密算法]]></title>
       <url>http://lavender1026.github.io/2016/08/07/%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/</url>
       <content type="html"><![CDATA[<h1 id="加密算法介绍"><a href="#加密算法介绍" class="headerlink" title="加密算法介绍"></a>加密算法介绍</h1><p>加密算法应该属于计算机专业密码学中的一些知识，这里总结一下从网上看到的知识，方便以后的查阅。</p>
@@ -496,44 +534,6 @@ NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
 </tbody>
 </table>
 <p>转载请注明出处！</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[quickLook 插件安装 让你的开发更效率]]></title>
-      <url>http://lavender1026.github.io/2015/11/17/quicklook/</url>
-      <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用 OSX 的朋友对于这个系统当中的 QuickLook 一定不会陌生，无论在哪里，几乎操作系统的全部地方，对于图片的内容，你都可以选中它，然后按下空格来快速查看这张图片是什么而不需要打开看图软件或者图片编辑器；或者一些文本的文档以及其他视频和音频——这实在是太方便了。</p>
-<p>不过，这个 QuickLook 也不是那么万能，比如说它只能支持苹果预置的几种常见格式（纯文本文档，MP4 格式的视频，MP3 格式的音频以及 JPEG 和 PNG 格式的图片等），一旦遇到点新颖的就不灵验了，比如同样是纯文本的 Markdown,json,看着就不是很舒服。那这里我就给大家推荐一下quicklook可以安装的小插件</p>
-<p>Homebrew<br>首先，安装插件我们需要先装上，Homebrew，那你可以来<a href="http://brew.sh/" target="_blank" rel="external">这里</a>看看，总之，打开你的终端，我们使用下面的代码来安装 brew：<br><code>ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</code></p>
-<p>下面是我常用的一些插件</p>
-<table>
-<thead>
-<tr>
-<th>qlmarkdown</th>
-<th>用于快速查看markdown</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>qlcolorrode</td>
-<td>使quicklook支持代码高亮</td>
-</tr>
-<tr>
-<td>betterzipql</td>
-<td>空格可以查看压缩包内容</td>
-</tr>
-<tr>
-<td>qlimagesize</td>
-<td>查看图片同时可以显示尺寸</td>
-</tr>
-<tr>
-<td>qljson</td>
-<td>可以按格式显示json</td>
-</tr>
-</tbody>
-</table>
-<p>然后，我们就可以使用命令  brew cask 来让 brew 自动配置 cask 了。</p>
-<p><code>brew cask install qlcolorcode qlmarkdown quicklook-csv betterzipql qlimagesize qljson</code><br>然后，其实还有更多的格式支持，大家可以再去<a href="http://www.quicklookplugins.com/" target="_blank" rel="external">这里</a>自行DIY</p>
 ]]></content>
     </entry>
     
