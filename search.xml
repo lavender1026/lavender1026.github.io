@@ -4,6 +4,14 @@
   
     
     <entry>
+      <title><![CDATA[最好的时代]]></title>
+      <url>http://lavender1026.github.io/2017/06/13/%E6%9C%80%E5%A5%BD%E7%9A%84%E6%97%B6%E4%BB%A3/</url>
+      <content type="html"><![CDATA[<h2 id="最好的时代"><a href="#最好的时代" class="headerlink" title="最好的时代"></a>最好的时代</h2><p>是啊，现在。我们91年的人已经是中年人了。。可怕<br>回想起刚毕业，好像历历在目。这次的裸辞让生活给我好好的上了一课，无论是对日后生活的期望，又或是对以后人生工作轨迹方向的变化，都或多或少的影响到了我，这么一个一无所有的中年人。</p>
+<h3 id="DREAM"><a href="#DREAM" class="headerlink" title="DREAM"></a>DREAM</h3><p>离职之前，一直觉得，撸代码能撸一辈子，或者起码在大城市赚够了钱在回家。现在看来，其实代码作为一个业余爱好或者是副业更为合适。毕竟，生活才是人生。将每天的加班，时间，耗费在电脑上</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[quickLook 插件安装 让你的开发更效率]]></title>
       <url>http://lavender1026.github.io/2016/10/17/quicklook/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用 OSX 的朋友对于这个系统当中的 QuickLook 一定不会陌生，无论在哪里，几乎操作系统的全部地方，对于图片的内容，你都可以选中它，然后按下空格来快速查看这张图片是什么而不需要打开看图软件或者图片编辑器；或者一些文本的文档以及其他视频和音频——这实在是太方便了。</p>
@@ -928,11 +936,11 @@ SDWebImageTransformAnimatedImage = 1 &lt;&lt; 10,
     <entry>
       <title><![CDATA[Scoket以及TCP/IP的理解]]></title>
       <url>http://lavender1026.github.io/2015/05/02/Scoket%E4%BB%A5%E5%8F%8ATCP:IP%E7%9A%84%E7%90%86%E8%A7%A3/</url>
-      <content type="html"><![CDATA[<p>#socket简介及特性<br>1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。</p>
+      <content type="html"><![CDATA[<h1 id="socket-简介及特性"><a href="#socket-简介及特性" class="headerlink" title="socket  简介及特性"></a>socket  简介及特性</h1><p>1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。</p>
 <p>2.多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，计算机操作系统为应用程序与TCP/IP协议交互提供了套接字(Socket)接口。应用层可以和传输层通过Socket接口，区分来自不同应用程序进程或网络连接的通信，实现数据传输的并发服务。</p>
 <p>3.建立Socket连接至少需要一对套接字，其中一个运行于客户端，称为ClientSocket，另一个运行于服务器端，称为ServerSocket。套接字之间的连接过程分为三个步骤：服务器监听，客户端请求，连接确认。</p>
 <p>Socket可以支持不同的传输层协议（TCP或UDP），当使用TCP协议进行连接时，该Socket连接就是一个TCP连接,UDP连接同理。<br><a id="more"></a></p>
-<p>#socket使用的库函数<br>1.创建套接字</p>
+<h1 id="socket-使用的库函数"><a href="#socket-使用的库函数" class="headerlink" title="socket 使用的库函数"></a>socket 使用的库函数</h1><p>1.创建套接字</p>
 <p>Socket(af,type,protocol)//建立地址和套接字的联系<br>bind(sockid, local addr, addrlen)//服务器端侦听客户端的请求<br>listen( Sockid ,quenlen)//建立服务器/客户端的连接 (面向连接TCP）</p>
 <p>2.客户端请求连接</p>
 <p>Connect(sockid, destaddr, addrlen)//服务器端等待从编号为Sockid的Socket上接收客户连接请求<br>newsockid=accept(Sockid，Clientaddr, paddrlen)//发送/接收数据</p>

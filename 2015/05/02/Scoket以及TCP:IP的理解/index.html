@@ -11,19 +11,19 @@
     
 
     
-    <meta name="description" content="#socket简介及特性1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。
-2.多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，计算机操作系统为应用程序与TCP/IP协议交互">
+    <meta name="description" content="socket  简介及特性1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。
+2.多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，计算机操作系统为应用程序与TCP/IP协议交">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Scoket以及TCP/IP的理解">
 <meta property="og:url" content="http://lavender1026.github.io/2015/05/02/Scoket以及TCP:IP的理解/index.html">
 <meta property="og:site_name" content="Lavender">
-<meta property="og:description" content="#socket简介及特性1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。
-2.多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，计算机操作系统为应用程序与TCP/IP协议交互">
-<meta property="og:updated_time" content="2016-07-01T09:20:28.000Z">
+<meta property="og:description" content="socket  简介及特性1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。
+2.多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，计算机操作系统为应用程序与TCP/IP协议交">
+<meta property="og:updated_time" content="2017-02-27T02:47:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Scoket以及TCP/IP的理解">
-<meta name="twitter:description" content="#socket简介及特性1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。
-2.多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，计算机操作系统为应用程序与TCP/IP协议交互">
+<meta name="twitter:description" content="socket  简介及特性1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。
+2.多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，计算机操作系统为应用程序与TCP/IP协议交">
 
     
     <link rel="alternative" href="/atom.xml" title="Lavender" type="application/atom+xml">
@@ -51,7 +51,7 @@
 				<h1 class="site-name"><a href="/" title="Lavender">Lavender</a></h1>
 				<h2 class="blog-motto"></h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -67,7 +67,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:lavender1026.github.io">
 					</form>
 					
@@ -90,24 +90,24 @@
 		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
 		
   <p class="article-time">
-    <time datetime="2015-05-02T01:51:17.000Z" itemprop="datePublished"> Published 2015-05-02</time>
+    <time datetime="2015-05-02T01:51:17.000Z" itemprop="datePublished"> 发表于 2015-05-02</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
-			
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#socket-简介及特性"><span class="toc-number">1.</span> <span class="toc-text">socket  简介及特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#socket-使用的库函数"><span class="toc-number">2.</span> <span class="toc-text">socket 使用的库函数</span></a></li></ol>
 		
 		</div>
 		
-		<p>#socket简介及特性<br>1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。</p>
+		<h1 id="socket-简介及特性"><a href="#socket-简介及特性" class="headerlink" title="socket  简介及特性"></a>socket  简介及特性</h1><p>1.socket（套接字）是通信的基石，是支持TCP/IP协议的网络通信的基本操作单元，包含进行网络通信必须的五种信息：连接使用的协议，本地主机的IP地址，本地进程的协议端口，远地主机的IP地址，远地进程的协议端口。</p>
 <p>2.多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，计算机操作系统为应用程序与TCP/IP协议交互提供了套接字(Socket)接口。应用层可以和传输层通过Socket接口，区分来自不同应用程序进程或网络连接的通信，实现数据传输的并发服务。</p>
 <p>3.建立Socket连接至少需要一对套接字，其中一个运行于客户端，称为ClientSocket，另一个运行于服务器端，称为ServerSocket。套接字之间的连接过程分为三个步骤：服务器监听，客户端请求，连接确认。</p>
 <p>Socket可以支持不同的传输层协议（TCP或UDP），当使用TCP协议进行连接时，该Socket连接就是一个TCP连接,UDP连接同理。<br><a id="more"></a></p>
-<p>#socket使用的库函数<br>1.创建套接字</p>
+<h1 id="socket-使用的库函数"><a href="#socket-使用的库函数" class="headerlink" title="socket 使用的库函数"></a>socket 使用的库函数</h1><p>1.创建套接字</p>
 <p>Socket(af,type,protocol)//建立地址和套接字的联系<br>bind(sockid, local addr, addrlen)//服务器端侦听客户端的请求<br>listen( Sockid ,quenlen)//建立服务器/客户端的连接 (面向连接TCP）</p>
 <p>2.客户端请求连接</p>
 <p>Connect(sockid, destaddr, addrlen)//服务器端等待从编号为Sockid的Socket上接收客户连接请求<br>newsockid=accept(Sockid，Clientaddr, paddrlen)//发送/接收数据</p>
@@ -168,22 +168,22 @@
 </section>
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
- 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#socket-简介及特性"><span class="toc-number">1.</span> <span class="toc-text">socket  简介及特性</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#socket-使用的库函数"><span class="toc-number">2.</span> <span class="toc-text">socket 使用的库函数</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -208,7 +208,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -248,7 +248,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -318,7 +318,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
 		
 		<a href="/about" target="_blank" title="DirkChen">DirkChen</a>
 		
@@ -526,7 +526,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
