@@ -4,23 +4,29 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>地图定位CoreLocation框架的使用(1) | Lavender</title>
+    <title>hexo常用命令 | Lavender</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="DirkChen">
     
 
     
-    <meta name="description" content="CoreLocation框架一:IOS8.0之前的定位#1. 前台定位导入CoreLocation框架以及对应的主头文件 创建CLLocationManager对象并设置代理       self.locationM = [[CLLocationManager alloc] init];       self.locationM.delegate = self;调用方法,开始更新用户位置信息[se">
+    <meta name="description" content="Hexo 约有二十个命令，但普通用户经常使用的大概只有下列几个:
+hexo shexo s启动本地服务器，用于预览主题。默认地址： http://localhost:4000/
+hexo s 是 hexo server 的缩写，命令效果一致；预览的同时可以修改文章内容或主题代码，保存后刷新页面即可；对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果。hexo n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="地图定位CoreLocation框架的使用(1)">
-<meta property="og:url" content="http://lavender1026.github.io/2015/07/11/地图定位CoreLocation框架的使用(1)/index.html">
+<meta property="og:title" content="hexo常用命令">
+<meta property="og:url" content="http://lavender1026.github.io/2017/06/21/hexo常用命令/index.html">
 <meta property="og:site_name" content="Lavender">
-<meta property="og:description" content="CoreLocation框架一:IOS8.0之前的定位#1. 前台定位导入CoreLocation框架以及对应的主头文件 创建CLLocationManager对象并设置代理       self.locationM = [[CLLocationManager alloc] init];       self.locationM.delegate = self;调用方法,开始更新用户位置信息[se">
-<meta property="og:updated_time" content="2016-07-01T09:21:13.000Z">
+<meta property="og:description" content="Hexo 约有二十个命令，但普通用户经常使用的大概只有下列几个:
+hexo shexo s启动本地服务器，用于预览主题。默认地址： http://localhost:4000/
+hexo s 是 hexo server 的缩写，命令效果一致；预览的同时可以修改文章内容或主题代码，保存后刷新页面即可；对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果。hexo n">
+<meta property="og:updated_time" content="2017-06-21T15:45:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="地图定位CoreLocation框架的使用(1)">
-<meta name="twitter:description" content="CoreLocation框架一:IOS8.0之前的定位#1. 前台定位导入CoreLocation框架以及对应的主头文件 创建CLLocationManager对象并设置代理       self.locationM = [[CLLocationManager alloc] init];       self.locationM.delegate = self;调用方法,开始更新用户位置信息[se">
+<meta name="twitter:title" content="hexo常用命令">
+<meta name="twitter:description" content="Hexo 约有二十个命令，但普通用户经常使用的大概只有下列几个:
+hexo shexo s启动本地服务器，用于预览主题。默认地址： http://localhost:4000/
+hexo s 是 hexo server 的缩写，命令效果一致；预览的同时可以修改文章内容或主题代码，保存后刷新页面即可；对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果。hexo n">
 
     
     <link rel="alternative" href="/atom.xml" title="Lavender" type="application/atom+xml">
@@ -80,14 +86,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/07/11/地图定位CoreLocation框架的使用(1)/" title="地图定位CoreLocation框架的使用(1)" itemprop="url">地图定位CoreLocation框架的使用(1)</a>
+      <a href="/2017/06/21/hexo常用命令/" title="hexo常用命令" itemprop="url">hexo常用命令</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="DirkChen" target="_blank" itemprop="author">DirkChen</a>
 		
   <p class="article-time">
-    <time datetime="2015-07-11T15:04:11.000Z" itemprop="datePublished"> 发表于 2015-07-11</time>
+    <time datetime="2017-06-21T15:43:22.000Z" itemprop="datePublished"> 发表于 2017-06-21</time>
     
   </p>
 </header>
@@ -96,39 +102,18 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CoreLocation框架"><span class="toc-number">1.</span> <span class="toc-text">CoreLocation框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一-IOS8-0之前的定位"><span class="toc-number">2.</span> <span class="toc-text">一:IOS8.0之前的定位</span></a></li></ol>
+			
 		
 		</div>
 		
-		<h1 id="CoreLocation框架"><a href="#CoreLocation框架" class="headerlink" title="CoreLocation框架"></a>CoreLocation框架</h1><h1 id="一-IOS8-0之前的定位"><a href="#一-IOS8-0之前的定位" class="headerlink" title="一:IOS8.0之前的定位"></a>一:IOS8.0之前的定位</h1><p>#1. 前台定位<br>导入CoreLocation框架以及对应的主头文件 <corelocation corelocation.h=""><br>创建CLLocationManager对象并设置代理<br>       self.locationM = [[CLLocationManager alloc] init];<br>       self.locationM.delegate = self;<br>调用方法,开始更新用户位置信息<br>[self.locationM startUpdatingLocation];<br>  在对应的代理方法中获取位置信息<br>       -(void)locationManager:(nonnull CLLocationManager *)manager didUpdateL<br>{<br>NSLog(@”每当请求到位置信息时, 都会调用此方法”);<br>}<br><a id="more"></a></corelocation></p>
-<p>#2. 后台定位<br>在前台定位基础上, 勾选后台模式Location updates image</p>
-<p>#3. 额外设置</p>
-<p>每隔多少米定位一次<br>代码: self.locationM.distanceFilter = 100;<br>功能: 只有当最新的位置与上一次获取的位置之间的距离, 大于这个值时, 才会通过代理告诉外界<br>设置定位精确度<br>代 码: self.locationM.desiredAccuracy = kCLLocationAccuracyBest; 功 能: 通过设置此属性, 获取不同精确度的位置信息<br>注意事项: 精确度越高,越耗电,定位所需时间越长<br>枚举注解:<br>  枚举值 kCLLocationAccuracyBestForNavigation<br>kCLLocationAccuracyBest kCLLocationAccuracyNearestTenMeters kCLLocationAccuracyHundredMeters kCLLocationAccuracyKilometer kCLLocationAccuracyThreeKilometers</p>
-<ol>
-<li>知识补充<br>含义<br>最适合导航<br>精度最好的<br>附近10米 附近100米 附近1000米 附近3000米</li>
-<li>定位常识<br>1) 标准定位服务(基于gps/基站/wifi定位, 具体使用哪种,苹果有自己规则)<blockquote>
-<p>程序关闭,就没法获取位置<br>2) 显著的位置变化定位服务(使用基站进行定位,所以必须要求设备有电话模块)<br>当app被完全关闭时,也可以接收到位置通知,并让app进入到后台处理<br>定位精度相比于上面,精度不大,所以耗电小,而且定位更新频率依据基站密度而定</p>
-</blockquote>
-</li>
-<li>应用场景<br>1) 如果要求定位及时,精度较高,并且运行时间较短,可使用标准定位;<br>2) 如果长时间监控用户位置,用户移动速度比较快(例如打车软件),可使用后者<br>#4. 测试环境:</li>
-<li>XCode7.0之前版本,例如XCode6.4版本 2. 模拟器选择iOS8.0之前的版本</li>
-</ol>
-<ul>
-<li>原因 : XCode7.0(包含7.0)之后不支持iOS8.0之前的模拟器<br>#5.常见问题总结<br>定位不到, 对应的代理方法不执行:<br>首先,检查运行的模拟器是否是iOS8.0之前的系统版本<br>其次,检查模拟器是否设置位置数据 第三,确保代码无问题(一般都是代理没有设置,或者位置管理器对象是局部变量,亦或是位置管理器 第四,绝逼是模拟器BUG, 请重置模拟器(是重置,不是重启)<br>#二. iOS8.0之后定位<br>#1. 前台定位<br>导入CoreLocation框架以及对应的主头文件 <corelocation corelocation.h=""><br>创建CLLocationManager对象并设置代理<pre><code>self.locationM = [[CLLocationManager alloc] init];
-self.locationM.delegate = self;
-</code></pre>请求前台定位授权, 并在Info.Plist文件中配置Key ( Nslocationwheninuseusagedescription ) [self.locationM requestWhenInUseAuthorization];<br>调用方法,开始更新用户位置信息<br>[self.locationM startUpdatingLocation];<br>在对应的代理方法中获取位置信息<pre><code>-(void)locationManager:(nonnull CLLocationManager *)manager didUpdateL
-</code></pre>{<br>NSLog(@”每当请求到位置信息时, 都会调用此方法”);<br>}<br>#2. 后台定位<br>方案一:<br>在前台定位基础上, 勾选后台模式Location updates</corelocation></li>
-</ul>
-<p>方案二:<br>请求前后台定位授权,并在info.plist文件中配置KEY ( NSLocationAlwaysUsageDescription ) [self.locationM requestAlwaysAuthorization];<br>注意:不需要勾选后台模式, 也可以进行后台定位<br>注意:此时授权状态如果是前后台定位, 那么即使APP退到后台时, 屏幕顶部会也不会出现 蓝条</p>
-<p>#3. 监听用户授权状态<br>实现以下代理方法即可<br>// 当用户授权状态发生变化时调用<br>-(void)locationManager:(nonnull CLLocationManager <em>)manager didChangeA {<br>switch (status) {<br>// 用户还未决定<br>case kCLAuthorizationStatusNotDetermined:<br>{<br>NSLog(@”用户还未决定”);<br>break; }<br>// 访问受限(苹果预留选项,暂时没用)<br>case kCLAuthorizationStatusRestricted:<br>{<br>NSLog(@”访问受限”); break;<br>}<br>// 定位关闭时和对此APP授权为never时调用<br> case kCLAuthorizationStatusDenied: {<br>// 定位是否可用(是否支持定位或者定位是否开启) if([CLLocationManager locationServicesEnabled])<br>{<br>NSLog(@”定位开启,但被拒”);<br>// 在此处, 应该提醒用户给此应用授权, 并跳转到”设置”界面让用户进行授权<br>// 在iOS8.0之后跳转到”设置”界面代码<br>NSURL </em>settingURL = [NSURL URLWithString:UIApplicationOpenSett if([[UIApplication sharedApplication] canOpenURL:settingURL]) {<br>                   [[UIApplication sharedApplication] openURL:settingURL];<br>      }<br>}else<br>{<br>NSLog(@”定位关闭,不可用”);<br>}<br>break; }<br>// 获取前后台定位授权<br>case kCLAuthorizationStatusAuthorizedAlways:<br>// case kCLAuthorizationStatusAuthorized: // 失效,不建议使用 {<br>NSLog(@”获取前后台定位授权”); break;<br>}<br>// 获得前台定位授权<br>       case kCLAuthorizationStatusAuthorizedWhenInUse:<br>{<br>NSLog(@”获得前台定位授权”); break;<br>} default:<br>break; }<br>}</p>
-<p>#5. 常见问题总结<br>定位不到, 对应的代理方法不执行:<br>首先,检查是否请求授权, 并设置了对应的KEY<br>其次,检查模拟器是否设置位置数据 第三,确保代码无问题(一般都是代理没有设置,或者位置管理器对象是局部变量,亦或是位置管理器 第四,前面都不对那就是模拟器BUG, 请重置模拟器(是重置,不是重启)</p>
-<p>#三. iOS9.0 定位补充 </p>
-<p>#1. 定位变化<br>前台定位<br>(同iOS8.0之后一致, 无任何变化, 都需要主动请求授权)<br>后台定位 方案一:<br>在前台定位基础上, 勾选后台模式Location updates, 并且设置以下属性为YES<br>     if ([[UIDevice currentDevice].systemVersion floatValue] &gt;= 9.0)<br>      {<br>          self.locationM.allowsBackgroundLocationUpdates = YES;<br>      }<br>方案二:<br>请求前后台定位授权,并在info.plist文件中配置KEY ( NSLocationAlwaysUsageDescription<br>[self.locationM requestAlwaysAuthorization]; </p>
-<p>#2. 新的API<br>单次定位请求;<br>代 码: [self.locationM requestAlwaysAuthorization]; 功 能: 获取一次位置信息<br>实现逻辑:<br>(1) 按照定位精确度从低到高进行排序,逐个进行定位.如果在有效时间内, 定位到了精<br>(2) 如果获取到的位置不是精确度最高的那个,也会在定位超时后,通过代理告诉外界. 注意事项:<br>(1) 必须实现代理的-locationManager:didFailWithError:方法 (2) 不能与startUpdatingLocation方法同时使用</p>
-<p>#3. 测试环境:</p>
-<ol>
-<li>XCode版本要求7.0版本以上 2. 模拟器选择iOS9.0之后的版本<br>#4. 常见问题总结<br>单次定位在模拟器上测试不出效果?<br>答: 因为模拟器的位置是固定的, 所以无法测试出效果, 请使用真机进行测试.</li>
-</ol>
+		<p>Hexo 约有二十个命令，但普通用户经常使用的大概只有下列几个:</p>
+<p>hexo s<br>hexo s<br>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
+<p>hexo s 是 hexo server 的缩写，命令效果一致；<br>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可；<br>对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果。<br>hexo new<br>hexo new “学习笔记  六”<br>新建一篇标题为 学习笔记 六 的文章，因为标题里有空格，所以加上了引号。</p>
+<p>文章标题可以在对应 md 文件里改，新建时标题可以写的简单些。<br>hexo d<br>hexo d<br>自动生成网站静态文件，并部署到设定的仓库。</p>
+<p>hexo d 是 hexo deploy 的缩写，命令效果一致。<br>hexo clean<br>hexo clean<br>清除缓存文件 db.json 和已生成的静态文件 public 。</p>
+<p>网站显示异常时可以执行这条命令试试。<br>hexo g<br>hexo g<br>生成网站静态文件到默认设置的 public 文件夹。</p>
+<p>便于查看网站生成的静态文件或者手动部署网站；<br>如果使用自动部署，不需要先执行该命令；<br>hexo g 是 hexo generate 的缩写，命令效果一致。<br>hexo new page<br>hexo new page aboutme<br>新建一个标题为 aboutme 的页面，默认链接地址为 主页地址/aboutme/</p>
+<p>标题可以为中文，但一般习惯用英文；<br>页面标题和文章一样可以随意修改；<br>页面不会出现在首页文章列表和归档中，也不支持设置分类和标签。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -141,7 +126,7 @@ self.locationM.delegate = self;
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://lavender1026.github.io/2015/07/11/地图定位CoreLocation框架的使用(1)/" data-title="地图定位CoreLocation框架的使用(1) | Lavender" data-tsina="null" class="share clearfix">
+	  <div data-url="http://lavender1026.github.io/2017/06/21/hexo常用命令/" data-title="hexo常用命令 | Lavender" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -154,19 +139,11 @@ self.locationM.delegate = self;
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2015/07/12/地图定位CoreLocation框架的使用(2)/" title="地图定位CoreLocation框架的使用(2)">
-  <strong>上一篇：</strong><br/>
-  <span>
-  地图定位CoreLocation框架的使用(2)</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2015/06/20/项目管理Git的常用命令/"  title="项目管理Git常用命令">
+<a href="/2017/06/21/Linux学习/"  title="Linux学习">
  <strong>下一篇：</strong><br/> 
- <span>项目管理Git常用命令
+ <span>Linux学习
 </span>
 </a>
 </div>
@@ -187,7 +164,7 @@ self.locationM.delegate = self;
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CoreLocation框架"><span class="toc-number">1.</span> <span class="toc-text">CoreLocation框架</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#一-IOS8-0之前的定位"><span class="toc-number">2.</span> <span class="toc-text">一:IOS8.0之前的定位</span></a></li></ol>
+ 
  
   </div>
 

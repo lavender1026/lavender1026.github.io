@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[hexo常用命令]]></title>
+      <url>http://lavender1026.github.io/2017/06/21/hexo%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+      <content type="html"><![CDATA[<p>Hexo 约有二十个命令，但普通用户经常使用的大概只有下列几个:</p>
+<p>hexo s<br>hexo s<br>启动本地服务器，用于预览主题。默认地址： <a href="http://localhost:4000/" target="_blank" rel="external">http://localhost:4000/</a></p>
+<p>hexo s 是 hexo server 的缩写，命令效果一致；<br>预览的同时可以修改文章内容或主题代码，保存后刷新页面即可；<br>对 Hexo 根目录 _config.yml 的修改，需要重启本地服务器后才能预览效果。<br>hexo new<br>hexo new “学习笔记  六”<br>新建一篇标题为 学习笔记 六 的文章，因为标题里有空格，所以加上了引号。</p>
+<p>文章标题可以在对应 md 文件里改，新建时标题可以写的简单些。<br>hexo d<br>hexo d<br>自动生成网站静态文件，并部署到设定的仓库。</p>
+<p>hexo d 是 hexo deploy 的缩写，命令效果一致。<br>hexo clean<br>hexo clean<br>清除缓存文件 db.json 和已生成的静态文件 public 。</p>
+<p>网站显示异常时可以执行这条命令试试。<br>hexo g<br>hexo g<br>生成网站静态文件到默认设置的 public 文件夹。</p>
+<p>便于查看网站生成的静态文件或者手动部署网站；<br>如果使用自动部署，不需要先执行该命令；<br>hexo g 是 hexo generate 的缩写，命令效果一致。<br>hexo new page<br>hexo new page aboutme<br>新建一个标题为 aboutme 的页面，默认链接地址为 主页地址/aboutme/</p>
+<p>标题可以为中文，但一般习惯用英文；<br>页面标题和文章一样可以随意修改；<br>页面不会出现在首页文章列表和归档中，也不支持设置分类和标签。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux学习]]></title>
       <url>http://lavender1026.github.io/2017/06/21/Linux%E5%AD%A6%E4%B9%A0/</url>
       <content type="html"><![CDATA[<pre><code>因为这次使用Gbase的数据库，数据库的安装要放在Linux上，所以我这次算是第一次接触了Linux。第一次使用Linux，真的是好清新好清爽，没有了wps，淘宝广告，只有terminal和代码，爽的一批。然而，作为新人，指令也是需要牢牢记住很多的。这里简单的记录下一些简单的指令
